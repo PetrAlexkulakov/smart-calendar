@@ -1,0 +1,143 @@
+// Схема данных умного календаря.
+//
+// Главное проектное решение: повторяющееся событие хранится ОДНОЙ строкой
+// в Event с правилом RRULE (RFC 5545), а не набором копий на каждую дату.
+// Конкретные вхождения вычисляются на лету при запросе диапазона
+// (см. src/lib/recurrence.ts). Отдельные изменённые или удалённые вхождения
+// серии описываются в EventException.
+//
+// В Prisma 7 строка подключения задаётся в prisma.config.ts, а не здесь.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(uuid(7))
+  email        String   @unique
+  passwordHash String
+  /// IANA-таймзона пользователя по умолчанию, напр. "Europe/Moscow".
+  timezone     String   @default("Europe/Moscow")
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(3)
+
+  events        Event[]
+  refreshTokens RefreshToken[]
+  subscriptions PushSubscription[]
+}
+
+/// Выданные refresh-токены. Храним хеш, а не сам токен: утечка базы
+/// не должна давать возможность войти. Строки нужны для ротации
+/// и для выхода со всех устройств.
+model RefreshToken {
+  id        String    @id @default(uuid(7))
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime  @db.Timestamptz(3)
+  revokedAt DateTime? @db.Timestamptz(3)
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Event {
+  id          String  @id @default(uuid(7))
+  userId      String
+  title       String
+  description String?
+
+  /// Начало и конец В UTC. Для повторяющегося события это первое вхождение —
+  /// оно же задаёт время суток и длительность для всей серии.
+  startsAt DateTime @db.Timestamptz(3)
+  endsAt   DateTime @db.Timestamptz(3)
+  allDay   Boolean  @default(false)
+
+  /// Таймзона, в которой событие было создано. Хранить обязательно:
+  /// встреча «каждый день в 9:00 по Москве» должна оставаться в 9:00
+  /// и после перехода на летнее время, а UTC-смещение при этом плывёт.
+  timezone String
+
+  /// Правило повторения RFC 5545 без префикса, напр. "FREQ=WEEKLY;BYDAY=MO,WE".
+  /// null — разовое событие.
+  rrule            String?
+  /// Дата, после которой серия не повторяется. null — бесконечная серия.
+  recurrenceEndsAt DateTime? @db.Timestamptz(3)
+
+  color String @default("#4f46e5")
+
+  /// За сколько минут до начала напомнить, напр. [10, 60].
+  /// Пустой массив — напоминания выключены.
+  reminderMinutes Int[] @default([])
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exceptions        EventException[]
+  sentNotifications SentNotification[]
+
+  /// Основной запрос календаря — «события пользователя в диапазоне дат».
+  @@index([userId, startsAt])
+}
+
+/// Одно вхождение серии, которое отличается от общего правила:
+/// отменено (isCancelled) либо перенесено/переименовано.
+/// Ключ вхождения — originalStart, то есть время, которое дало бы правило.
+model EventException {
+  id            String   @id @default(uuid(7))
+  eventId       String
+  originalStart DateTime @db.Timestamptz(3)
+
+  isCancelled Boolean @default(false)
+
+  /// Заполняются только если вхождение переопределено.
+  startsAt    DateTime? @db.Timestamptz(3)
+  endsAt      DateTime? @db.Timestamptz(3)
+  title       String?
+  description String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, originalStart])
+}
+
+/// Подписка браузера на Web Push — одна строка на устройство.
+model PushSubscription {
+  id        String  @id @default(uuid(7))
+  userId    String
+  endpoint  String  @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+/// Журнал отправленных напоминаний. Без него перезапуск планировщика
+/// разошлёт уведомления повторно: уникальный ключ ниже — защита от дублей.
+model SentNotification {
+  id              String   @id @default(uuid(7))
+  eventId         String
+  occurrenceStart DateTime @db.Timestamptz(3)
+  reminderMinutes Int
+  sentAt          DateTime @default(now()) @db.Timestamptz(3)
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, occurrenceStart, reminderMinutes])
+  @@index([sentAt])
+}

@@ -9,23 +9,34 @@
     "dev": "tsx watch src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:reset": "prisma migrate reset",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "@smart-calendar/shared": "*",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "luxon": "^3.7.2",
+    "pg": "^8.22.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "prisma": "^7.9.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/luxon": "^3.7.4",
     "@types/node": "^26.2.0",
+    "@types/pg": "^8.21.0",
     "tsx": "^4.23.11",
     "vitest": "^4.1.10"
   }

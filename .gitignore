@@ -22,4 +22,4 @@ Thumbs.db
 !.vscode/extensions.json
 
 # Сгенерированный клиент Prisma
-apps/api/src/generated/
+apps/api/generated/
