@@ -1,0 +1,32 @@
+{
+  "name": "@smart-calendar/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Бэкенд умного календаря: Express 5 + Prisma",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@smart-calendar/shared": "*",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "luxon": "^3.7.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/luxon": "^3.7.4",
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.11",
+    "vitest": "^4.1.10"
+  }
+}

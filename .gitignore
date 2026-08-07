@@ -1,0 +1,25 @@
+node_modules/
+dist/
+build/
+coverage/
+
+.env
+.env.local
+.env.*.local
+
+*.log
+npm-debug.log*
+
+.vite/
+.turbo/
+*.tsbuildinfo
+
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Сгенерированный клиент Prisma
+apps/api/src/generated/

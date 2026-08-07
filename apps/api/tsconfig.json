@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "noEmit": true,
+    // Импортируем с явным .ts — так же, как это делает нативный
+    // type stripping в Node 22+ и tsx.
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src"]
+}
