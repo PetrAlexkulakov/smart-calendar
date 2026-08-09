@@ -8,3 +8,4 @@
 export * from './api.ts';
 export * from './auth.ts';
 export * from './events.ts';
+export * from './notifications.ts';

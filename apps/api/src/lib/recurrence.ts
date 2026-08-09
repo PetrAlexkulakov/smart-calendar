@@ -1,8 +1,13 @@
 import type { EventOccurrence } from '@smart-calendar/shared';
 import { DateTime } from 'luxon';
-import { RRule } from 'rrule';
+// Именованный импорт здесь не работает: Node резолвит rrule в CJS-сборку,
+// где всё лежит под default. В Vite, наоборот, подхватывается ESM-сборка
+// с именованными экспортами — поэтому пакет и не вынесен в shared.
+import rrulePackage from 'rrule';
 
 import type { Event, EventException } from '../../generated/prisma/client.ts';
+
+const { RRule } = rrulePackage;
 
 export type EventWithExceptions = Event & { exceptions: EventException[] };
 

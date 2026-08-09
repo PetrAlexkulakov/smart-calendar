@@ -8,8 +8,21 @@ import type {
 
 import { NotFoundError, ValidationError } from '../../lib/errors.ts';
 import { prisma } from '../../lib/prisma.ts';
-import { expandEvents } from '../../lib/recurrence.ts';
+import { expandEvents, isValidRRule } from '../../lib/recurrence.ts';
 import type { Event } from '../../../generated/prisma/client.ts';
+
+/**
+ * Схема в общем пакете проверяет только форму правила. Настоящий разбор
+ * делается здесь: у бэкенда есть rrule, и лучше отклонить правило сейчас,
+ * чем показывать сломанную серию потом.
+ */
+function assertValidRRule(rule: string | null | undefined): void {
+  if (rule && !isValidRRule(rule)) {
+    throw new ValidationError('Данные не прошли проверку', {
+      rrule: ['Не удалось разобрать правило повторения'],
+    });
+  }
+}
 
 export function toEventDto(event: Event): EventDto {
   return {
@@ -67,6 +80,8 @@ export async function getEventOwned(userId: string, eventId: string): Promise<Ev
 }
 
 export async function createEvent(userId: string, input: CreateEventInput): Promise<EventDto> {
+  assertValidRRule(input.rrule);
+
   const event = await prisma.event.create({
     data: {
       userId,
@@ -92,6 +107,7 @@ export async function updateEvent(
   input: UpdateEventInput,
 ): Promise<EventDto> {
   const current = await getEventOwned(userId, eventId);
+  assertValidRRule(input.rrule);
 
   // Схема сверяет порядок дат, только если пришли обе. Когда меняют
   // одну, сравнивать надо с тем, что уже лежит в базе.

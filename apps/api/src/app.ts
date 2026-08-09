@@ -7,6 +7,7 @@ import { env } from './config/env.ts';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
 import { authRouter } from './modules/auth/auth.routes.ts';
 import { eventsRouter } from './modules/events/events.routes.ts';
+import { notificationsRouter } from './modules/notifications/notifications.routes.ts';
 
 /**
  * Сборка Express-приложения вынесена из index.ts, чтобы интеграционные тесты
@@ -32,7 +33,7 @@ export function createApp() {
 
   app.use('/auth', authRouter);
   app.use('/events', eventsRouter);
-  // Здесь подключится /notifications (этап 6).
+  app.use('/notifications', notificationsRouter);
 
   // Порядок важен: сначала «маршрут не найден», затем обработчик ошибок —
   // оба должны стоять после всех остальных middleware.
