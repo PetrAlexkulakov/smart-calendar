@@ -22,3 +22,15 @@ export function validateQuery<T>(schema: ZodType<T>): RequestHandler {
     next();
   };
 }
+
+/**
+ * Проверяет параметры пути. Помимо типизации это отсекает мусорные id:
+ * без проверки строка вроде "abc" ушла бы в Prisma и вернулась
+ * пятисоткой вместо внятного 400.
+ */
+export function validateParams<T>(schema: ZodType<T>): RequestHandler {
+  return (req, _res, next) => {
+    req.validatedParams = schema.parse(req.params);
+    next();
+  };
+}

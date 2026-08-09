@@ -9,6 +9,8 @@ declare global {
       user?: { id: string };
       /** Заполняется validateQuery: в Express 5 req.query только для чтения. */
       validatedQuery?: unknown;
+      /** Заполняется validateParams. */
+      validatedParams?: unknown;
     }
   }
 }
