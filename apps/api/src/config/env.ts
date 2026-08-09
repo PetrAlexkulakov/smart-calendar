@@ -16,6 +16,8 @@ const envSchema = z.object({
   WEB_ORIGIN: z.url().default('http://localhost:5173'),
 
   DATABASE_URL: z.string().optional(),
+  /** Соединение в обход пула — нужно только Prisma CLI для миграций. */
+  DIRECT_DATABASE_URL: z.string().optional(),
 
   JWT_ACCESS_SECRET: z.string().optional(),
   JWT_REFRESH_SECRET: z.string().optional(),
