@@ -153,7 +153,7 @@ describe('GET /events', () => {
     expect(tooWide.status).toBe(400);
   });
 
-  it('отдаёт события, попадающие в диапазон, и отсекает остальные', async () => {
+  it('отдаёт вхождения, попадающие в диапазон, и отсекает остальные', async () => {
     const inRange = await request(app)
       .get('/events?from=2026-09-01T00:00:00Z&to=2026-09-02T00:00:00Z')
       .set('Authorization', `Bearer ${alice.token}`);
@@ -162,11 +162,11 @@ describe('GET /events', () => {
       .set('Authorization', `Bearer ${alice.token}`);
 
     expect(inRange.status).toBe(200);
-    expect(inRange.body.events.length).toBeGreaterThan(0);
+    expect(inRange.body.occurrences.length).toBeGreaterThan(0);
     // Повторяющееся событие из предыдущего теста продолжается и в ноябре,
     // а вот разовые сентябрьские сюда попасть не должны.
     expect(
-      outOfRange.body.events.every((event: { rrule: string | null }) => event.rrule !== null),
+      outOfRange.body.occurrences.every((item: { isRecurring: boolean }) => item.isRecurring),
     ).toBe(true);
   });
 
@@ -176,7 +176,162 @@ describe('GET /events', () => {
       .set('Authorization', `Bearer ${bob.token}`);
 
     expect(response.status).toBe(200);
-    expect(response.body.events).toEqual([]);
+    expect(response.body.occurrences).toEqual([]);
+  });
+
+  it('разворачивает повторяющееся событие в отдельные вхождения', async () => {
+    const carol = await createUser();
+
+    await request(app)
+      .post('/events')
+      .set('Authorization', `Bearer ${carol.token}`)
+      .send(
+        validEvent({
+          title: 'Ежедневная встреча',
+          startsAt: '2026-10-05T09:00:00.000Z',
+          endsAt: '2026-10-05T10:00:00.000Z',
+          rrule: 'FREQ=DAILY',
+        }),
+      );
+
+    const response = await request(app)
+      .get('/events?from=2026-10-05T00:00:00Z&to=2026-10-12T00:00:00Z')
+      .set('Authorization', `Bearer ${carol.token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.occurrences).toHaveLength(7);
+    // У всех вхождений серии общий eventId, но разное время.
+    const ids = new Set(response.body.occurrences.map((item: { eventId: string }) => item.eventId));
+    expect(ids.size).toBe(1);
+  });
+
+  it('отклоняет неразбираемое и слишком частое правило повторения', async () => {
+    const broken = await request(app)
+      .post('/events')
+      .set('Authorization', `Bearer ${alice.token}`)
+      .send(validEvent({ rrule: 'КАЖДЫЙ ВТОРНИК' }));
+    const tooFrequent = await request(app)
+      .post('/events')
+      .set('Authorization', `Bearer ${alice.token}`)
+      .send(validEvent({ rrule: 'FREQ=MINUTELY' }));
+
+    expect(broken.status).toBe(400);
+    expect(tooFrequent.status).toBe(400);
+  });
+});
+
+describe('операции над отдельным вхождением серии', () => {
+  /** Заводит пользователя с ежедневной серией и возвращает контекст. */
+  async function createSeries() {
+    const user = await createUser();
+    const created = await request(app)
+      .post('/events')
+      .set('Authorization', `Bearer ${user.token}`)
+      .send(
+        validEvent({
+          title: 'Серия',
+          startsAt: '2026-10-05T09:00:00.000Z',
+          endsAt: '2026-10-05T10:00:00.000Z',
+          rrule: 'FREQ=DAILY',
+        }),
+      );
+
+    return { user, eventId: created.body.event.id as string };
+  }
+
+  const week = 'from=2026-10-05T00:00:00Z&to=2026-10-12T00:00:00Z';
+
+  it('отменяет одно вхождение, не трогая остальные', async () => {
+    const { user, eventId } = await createSeries();
+
+    const cancelled = await request(app)
+      .post(`/events/${eventId}/occurrences/cancel`)
+      .set('Authorization', `Bearer ${user.token}`)
+      .send({ occurrenceStart: '2026-10-07T09:00:00.000Z' });
+    expect(cancelled.status).toBe(204);
+
+    const response = await request(app)
+      .get(`/events?${week}`)
+      .set('Authorization', `Bearer ${user.token}`);
+
+    expect(response.body.occurrences).toHaveLength(6);
+    expect(
+      response.body.occurrences.map((item: { occurrenceStart: string }) => item.occurrenceStart),
+    ).not.toContain('2026-10-07T09:00:00.000Z');
+  });
+
+  it('переносит одно вхождение и помнит его исходное время', async () => {
+    const { user, eventId } = await createSeries();
+
+    const moved = await request(app)
+      .patch(`/events/${eventId}/occurrences`)
+      .set('Authorization', `Bearer ${user.token}`)
+      .send({
+        occurrenceStart: '2026-10-07T09:00:00.000Z',
+        startsAt: '2026-10-07T15:00:00.000Z',
+        endsAt: '2026-10-07T16:00:00.000Z',
+        title: 'Перенесённая встреча',
+      });
+    expect(moved.status).toBe(204);
+
+    const response = await request(app)
+      .get(`/events?${week}`)
+      .set('Authorization', `Bearer ${user.token}`);
+
+    const overridden = response.body.occurrences.find(
+      (item: { occurrenceStart: string }) => item.occurrenceStart === '2026-10-07T09:00:00.000Z',
+    );
+
+    expect(response.body.occurrences).toHaveLength(7);
+    expect(overridden.startsAt).toBe('2026-10-07T15:00:00.000Z');
+    expect(overridden.title).toBe('Перенесённая встреча');
+    expect(overridden.isOverridden).toBe(true);
+  });
+
+  it('возвращает отменённое вхождение обратно в серию', async () => {
+    const { user, eventId } = await createSeries();
+
+    await request(app)
+      .post(`/events/${eventId}/occurrences/cancel`)
+      .set('Authorization', `Bearer ${user.token}`)
+      .send({ occurrenceStart: '2026-10-07T09:00:00.000Z' });
+
+    const restored = await request(app)
+      .post(`/events/${eventId}/occurrences/restore`)
+      .set('Authorization', `Bearer ${user.token}`)
+      .send({ occurrenceStart: '2026-10-07T09:00:00.000Z' });
+    expect(restored.status).toBe(204);
+
+    const response = await request(app)
+      .get(`/events?${week}`)
+      .set('Authorization', `Bearer ${user.token}`);
+
+    expect(response.body.occurrences).toHaveLength(7);
+  });
+
+  it('не позволяет трогать вхождения чужой серии', async () => {
+    const { eventId } = await createSeries();
+
+    const response = await request(app)
+      .post(`/events/${eventId}/occurrences/cancel`)
+      .set('Authorization', `Bearer ${bob.token}`)
+      .send({ occurrenceStart: '2026-10-07T09:00:00.000Z' });
+
+    expect(response.status).toBe(404);
+  });
+
+  it('требует указывать начало и конец переноса вместе', async () => {
+    const { user, eventId } = await createSeries();
+
+    const response = await request(app)
+      .patch(`/events/${eventId}/occurrences`)
+      .set('Authorization', `Bearer ${user.token}`)
+      .send({
+        occurrenceStart: '2026-10-07T09:00:00.000Z',
+        startsAt: '2026-10-07T15:00:00.000Z',
+      });
+
+    expect(response.status).toBe(400);
   });
 });
 

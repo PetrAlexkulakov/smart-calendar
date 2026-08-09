@@ -1,4 +1,25 @@
+import { RRule } from 'rrule';
 import { z } from 'zod';
+
+/**
+ * Правило должно разбираться и не быть безумно частым: FREQ=SECONDLY
+ * на годовом окне — это тридцать миллионов вхождений.
+ */
+const rruleSchema = z
+  .string()
+  .max(500)
+  .refine((value) => {
+    try {
+      RRule.parseString(value);
+      return true;
+    } catch {
+      return false;
+    }
+  }, 'Не удалось разобрать правило повторения')
+  .refine(
+    (value) => !/FREQ=(SECONDLY|MINUTELY)/i.test(value),
+    'Слишком частое повторение: минимальный шаг — час',
+  );
 
 /** Проверяет, что строка — существующая IANA-таймзона, а не произвольный текст. */
 function isValidTimezone(value: string): boolean {
@@ -48,7 +69,7 @@ const eventFieldsSchema = z.object({
   allDay: z.boolean(),
   timezone: timezoneSchema,
   /** Правило RFC 5545 без префикса, напр. "FREQ=WEEKLY;BYDAY=MO,WE". */
-  rrule: z.string().max(500).nullish(),
+  rrule: rruleSchema.nullish(),
   recurrenceEndsAt: z.coerce.date().nullish(),
   color: colorSchema,
   reminderMinutes: reminderMinutesSchema,
@@ -101,9 +122,41 @@ export const eventRangeQuerySchema = z
     { message: 'Диапазон не может быть больше года', path: ['to'] },
   );
 
+/**
+ * Операции над одним вхождением серии. Ключ — occurrenceStart, то есть
+ * время, которое дало правило (а не то, куда вхождение потом перенесли).
+ */
+export const cancelOccurrenceSchema = z.object({
+  occurrenceStart: z.coerce.date(),
+});
+
+export const overrideOccurrenceSchema = z
+  .object({
+    occurrenceStart: z.coerce.date(),
+    startsAt: z.coerce.date().optional(),
+    endsAt: z.coerce.date().optional(),
+    title: z.string().trim().min(1).max(200).optional(),
+    description: z.string().max(2000).nullish(),
+  })
+  .refine(
+    (data) =>
+      data.startsAt === undefined ||
+      data.endsAt === undefined ||
+      data.endsAt.getTime() > data.startsAt.getTime(),
+    { message: 'Событие должно заканчиваться позже, чем начинается', path: ['endsAt'] },
+  )
+  .refine(
+    // Перенос задаётся парой дат: сдвинуть только начало нельзя,
+    // иначе длительность вхождения станет неопределённой.
+    (data) => (data.startsAt === undefined) === (data.endsAt === undefined),
+    { message: 'Начало и конец переноса указываются вместе', path: ['endsAt'] },
+  );
+
 export type CreateEventInput = z.infer<typeof createEventSchema>;
 export type UpdateEventInput = z.infer<typeof updateEventSchema>;
 export type EventRangeQuery = z.infer<typeof eventRangeQuerySchema>;
+export type CancelOccurrenceInput = z.infer<typeof cancelOccurrenceSchema>;
+export type OverrideOccurrenceInput = z.infer<typeof overrideOccurrenceSchema>;
 
 /** Событие, как его отдаёт API: даты — строки ISO 8601 в UTC. */
 export interface EventDto {

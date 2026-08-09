@@ -1,7 +1,14 @@
-import type { CreateEventInput, EventDto, UpdateEventInput } from '@smart-calendar/shared';
+import type {
+  CreateEventInput,
+  EventDto,
+  EventOccurrence,
+  OverrideOccurrenceInput,
+  UpdateEventInput,
+} from '@smart-calendar/shared';
 
 import { NotFoundError, ValidationError } from '../../lib/errors.ts';
 import { prisma } from '../../lib/prisma.ts';
+import { expandEvents } from '../../lib/recurrence.ts';
 import type { Event } from '../../../generated/prisma/client.ts';
 
 export function toEventDto(event: Event): EventDto {
@@ -119,4 +126,69 @@ export async function updateEvent(
 export async function deleteEvent(userId: string, eventId: string): Promise<void> {
   await getEventOwned(userId, eventId);
   await prisma.event.delete({ where: { id: eventId } });
+}
+
+/** Готовый для календаря список вхождений за период. */
+export async function listOccurrences(
+  userId: string,
+  from: Date,
+  to: Date,
+): Promise<EventOccurrence[]> {
+  return expandEvents(await listEventsInRange(userId, from, to), from, to);
+}
+
+/**
+ * Отменяет одно вхождение серии, не трогая остальные.
+ * Повторная отмена того же вхождения ничего не меняет.
+ */
+export async function cancelOccurrence(
+  userId: string,
+  eventId: string,
+  occurrenceStart: Date,
+): Promise<void> {
+  await getEventOwned(userId, eventId);
+
+  await prisma.eventException.upsert({
+    where: { eventId_originalStart: { eventId, originalStart: occurrenceStart } },
+    create: { eventId, originalStart: occurrenceStart, isCancelled: true },
+    // Перенесённое вхождение можно отменить: время переноса при этом
+    // сбрасывается, чтобы восстановление вернуло его на место по правилу.
+    update: { isCancelled: true, startsAt: null, endsAt: null },
+  });
+}
+
+/** Переносит или переименовывает одно вхождение серии. */
+export async function overrideOccurrence(
+  userId: string,
+  eventId: string,
+  input: OverrideOccurrenceInput,
+): Promise<void> {
+  await getEventOwned(userId, eventId);
+
+  const fields = {
+    isCancelled: false,
+    ...(input.startsAt !== undefined && { startsAt: input.startsAt }),
+    ...(input.endsAt !== undefined && { endsAt: input.endsAt }),
+    ...(input.title !== undefined && { title: input.title }),
+    ...(input.description !== undefined && { description: input.description }),
+  };
+
+  await prisma.eventException.upsert({
+    where: { eventId_originalStart: { eventId, originalStart: input.occurrenceStart } },
+    create: { eventId, originalStart: input.occurrenceStart, ...fields },
+    update: fields,
+  });
+}
+
+/** Возвращает вхождение к тому, что задаёт правило: снимает отмену и перенос. */
+export async function restoreOccurrence(
+  userId: string,
+  eventId: string,
+  occurrenceStart: Date,
+): Promise<void> {
+  await getEventOwned(userId, eventId);
+
+  await prisma.eventException.deleteMany({
+    where: { eventId, originalStart: occurrenceStart },
+  });
 }
