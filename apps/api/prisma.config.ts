@@ -11,10 +11,10 @@ export default defineConfig({
     seed: 'tsx prisma/seed.ts',
   },
   datasource: {
+    // В Prisma 7 defineConfig принимает только url и shadowDatabaseUrl —
+    // отдельного directUrl больше нет. Поэтому для Neon в DATABASE_URL
+    // нужна строка БЕЗ "-pooler": миграции берут advisory-локи,
+    // а они привязаны к сессии и через пулер не работают.
     url: env('DATABASE_URL'),
-    // Миграции идут в обход пула: Prisma берёт advisory-локи, а они
-    // привязаны к сессии и через пулер работать не будут.
-    // Для локального Postgres достаточно оставить переменную пустой.
-    directUrl: env('DIRECT_DATABASE_URL'),
   },
 });

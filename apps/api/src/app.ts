@@ -4,6 +4,8 @@ import cors from 'cors';
 import express from 'express';
 
 import { env } from './config/env.ts';
+import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
+import { authRouter } from './modules/auth/auth.routes.ts';
 
 /**
  * Сборка Express-приложения вынесена из index.ts, чтобы интеграционные тесты
@@ -12,7 +14,7 @@ import { env } from './config/env.ts';
 export function createApp() {
   const app = express();
 
-  // credentials: true обязателен — refresh-токен будет ездить в httpOnly cookie,
+  // credentials: true обязателен — refresh-токен ездит в httpOnly cookie,
   // а браузер не отправит её на другой origin без явного разрешения.
   app.use(cors({ origin: env.WEB_ORIGIN, credentials: true }));
   app.use(express.json());
@@ -27,8 +29,13 @@ export function createApp() {
     res.json(body);
   });
 
-  // Здесь будут подключаться роутеры: /auth (этап 2), /events (этап 3),
-  // /notifications (этап 6).
+  app.use('/auth', authRouter);
+  // Здесь подключатся /events (этап 3) и /notifications (этап 6).
+
+  // Порядок важен: сначала «маршрут не найден», затем обработчик ошибок —
+  // оба должны стоять после всех остальных middleware.
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }

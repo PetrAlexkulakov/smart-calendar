@@ -4,12 +4,6 @@ import pg from 'pg';
 import { PrismaClient } from '../../generated/prisma/client.ts';
 import { env } from '../config/env.ts';
 
-if (!env.DATABASE_URL) {
-  throw new Error(
-    'DATABASE_URL не задан. Заполни его в .env в корне проекта — без базы API работать не может.',
-  );
-}
-
 /**
  * В Prisma 7 клиент больше не открывает соединение сам: драйвер передаётся
  * явно через adapter. Пул один на процесс — создавать его на каждый запрос

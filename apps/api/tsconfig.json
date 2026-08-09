@@ -10,5 +10,5 @@
     // type stripping в Node 22+ и tsx.
     "allowImportingTsExtensions": true
   },
-  "include": ["src"]
+  "include": ["src", "prisma", "prisma.config.ts"]
 }

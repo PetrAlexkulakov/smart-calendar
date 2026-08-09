@@ -6,21 +6,21 @@ import { z } from 'zod';
 config({ path: new URL('../../../../.env', import.meta.url) });
 
 /**
- * Секреты помечены как optional намеренно: на текущем этапе сервер должен
- * подниматься с пустым .env. Как только появится аутентификация (этап 2)
- * и push (этап 6), соответствующие поля станут обязательными.
+ * Всё, без чего сервер не имеет смысла, объявлено обязательным: лучше
+ * не подняться на старте с внятным сообщением, чем упасть на первом
+ * запросе. Ключи VAPID пока опциональны — они нужны только push-этапу.
  */
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
   WEB_ORIGIN: z.url().default('http://localhost:5173'),
 
-  DATABASE_URL: z.string().optional(),
-  /** Соединение в обход пула — нужно только Prisma CLI для миграций. */
-  DIRECT_DATABASE_URL: z.string().optional(),
+  DATABASE_URL: z.string().min(1, 'нужна строка подключения к Postgres'),
 
-  JWT_ACCESS_SECRET: z.string().optional(),
-  JWT_REFRESH_SECRET: z.string().optional(),
+  // 32 байта энтропии в hex. Сгенерировать:
+  // node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+  JWT_ACCESS_SECRET: z.string().min(32, 'секрет слишком короткий, нужно минимум 32 символа'),
+  JWT_REFRESH_SECRET: z.string().min(32, 'секрет слишком короткий, нужно минимум 32 символа'),
   ACCESS_TOKEN_TTL: z.string().default('15m'),
   REFRESH_TOKEN_TTL_DAYS: z.coerce.number().int().positive().default(30),
 
