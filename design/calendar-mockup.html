@@ -1,0 +1,4013 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="a4b26d35-0063-4b5e-a9d6-8317cbf52751"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <meta name="design_doc_mode" content="canvas" />
+        <style>
+          /* Industry — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+          /* vietnamese */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('0789cad2-fbb4-413c-a441-cd62d6b58247') format('woff2');
+            unicode-range:
+              U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0,
+              U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('b1a7de89-abaa-44fa-84f7-bc9bfb3fd2eb') format('woff2');
+            unicode-range:
+              U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+              U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+              U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('06e66f99-4fbe-477a-91e7-1cf0cb7f0c5c') format('woff2');
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+              U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
+          /* vietnamese */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('650f4c13-da5d-4c83-9d50-3752c614f8ed') format('woff2');
+            unicode-range:
+              U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0,
+              U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('ec783723-0c6f-4f7f-b88c-ef16a4d1ed2c') format('woff2');
+            unicode-range:
+              U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+              U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+              U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('8b2b0ce9-7089-4d62-9674-136580da7cd2') format('woff2');
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+              U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
+          /* vietnamese */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('89c72317-294b-41c5-b8e6-daacdf8c1e76') format('woff2');
+            unicode-range:
+              U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0,
+              U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('f15df380-93fb-442f-b9eb-4f3644bef927') format('woff2');
+            unicode-range:
+              U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+              U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+              U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('d29e828e-62a5-4f60-b10a-d6cabb67397b') format('woff2');
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+              U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
+          /* vietnamese */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('47bdf408-7dc3-49ee-9557-7d8a8e34c520') format('woff2');
+            unicode-range:
+              U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0,
+              U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('2bf716c8-751a-45bd-b598-7bfac7fcc235') format('woff2');
+            unicode-range:
+              U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+              U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+              U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('c9352351-e963-45b4-9921-33a962e8cd51') format('woff2');
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+              U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
+          /* vietnamese */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('f31b8927-9fdd-4316-bfc4-3465b680dfa6') format('woff2');
+            unicode-range:
+              U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0,
+              U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('49a56ad8-fda4-4a89-ad9e-03da1934118b') format('woff2');
+            unicode-range:
+              U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+              U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+              U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('c4e2df6b-a071-45f1-8422-f3ebb988eee2') format('woff2');
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+              U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
+
+          :root {
+            --color-bg: #f2f2f3;
+            --color-surface: #e9e9ea;
+            --color-text: #1d1f20;
+            --color-accent: #5980a6;
+            --color-accent-2: #728fab;
+            --color-divider: color-mix(in srgb, #1d1f20 16%, transparent);
+
+            /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+            --color-neutral-100: #f5f5f8;
+            --color-neutral-200: #e7e7ea;
+            --color-neutral-300: #d4d4d7;
+            --color-neutral-400: #b7b7ba;
+            --color-neutral-500: #98989b;
+            --color-neutral-600: #7a7a7d;
+            --color-neutral-700: #5d5d60;
+            --color-neutral-800: #424244;
+            --color-neutral-900: #2b2b2d;
+
+            --color-accent-100: #eef6ff;
+            --color-accent-200: #d6ebff;
+            --color-accent-300: #b5d9fd;
+            --color-accent-400: #94bce3;
+            --color-accent-500: #749dc4;
+            --color-accent-600: #597ea3;
+            --color-accent-700: #416180;
+            --color-accent-800: #2c455d;
+            --color-accent-900: #1d2d3d;
+
+            --color-accent-2-100: #eef6ff;
+            --color-accent-2-200: #d6ebff;
+            --color-accent-2-300: #bdd8f2;
+            --color-accent-2-400: #9ebbd8;
+            --color-accent-2-500: #7e9cb8;
+            --color-accent-2-600: #627d98;
+            --color-accent-2-700: #486077;
+            --color-accent-2-800: #314457;
+            --color-accent-2-900: #1f2d3a;
+
+            --font-heading: 'Barlow Condensed', system-ui, sans-serif;
+            --font-heading-weight: 600;
+            --font-body: 'Barlow', system-ui, sans-serif;
+
+            --space-1: 3.4px;
+            --space-2: 6.8px;
+            --space-3: 10.2px;
+            --space-4: 13.6px;
+            --space-6: 20.4px;
+            --space-8: 27.2px;
+
+            --radius-sm: 2px;
+            --radius-md: 4px;
+            --radius-lg: 7px;
+
+            /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+            --shadow-sm: 0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent);
+            --shadow-md: 0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent);
+            --shadow-lg: 0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent);
+          }
+
+          body {
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+          }
+          h1,
+          h2,
+          h3,
+          h4 {
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+          }
+
+          .blueprint {
+            position: relative;
+            border: 1px solid var(--color-divider);
+            border-radius: 0;
+          }
+          /* The overlay image treatments (halftone, duotone) clip their overlay
+   (overflow:hidden); a blueprint wrapper draws its registration marks
+   outside the box, so when both classes share a wrapper the frame must
+   win. */
+          .blueprint.halftone,
+          .blueprint.plate,
+          .blueprint.duotone {
+            overflow: visible;
+          }
+          .blueprint > .corner {
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            color: color-mix(in srgb, var(--color-text) 55%, transparent);
+          }
+          .blueprint > .corner::before,
+          .blueprint > .corner::after {
+            content: '';
+            position: absolute;
+            background: currentColor;
+          }
+          .blueprint > .corner::before {
+            left: 5px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+          }
+          .blueprint > .corner::after {
+            top: 5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+          }
+          .blueprint > .corner.tl {
+            top: -6px;
+            left: -6px;
+          }
+          .blueprint > .corner.tr {
+            top: -6px;
+            right: -6px;
+          }
+          .blueprint > .corner.bl {
+            bottom: -6px;
+            left: -6px;
+          }
+          .blueprint > .corner.br {
+            bottom: -6px;
+            right: -6px;
+          }
+
+          .duotone {
+            position: relative;
+            overflow: hidden;
+          }
+          .duotone::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: var(--color-accent);
+            mix-blend-mode: color;
+          }
+
+          /* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          body {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.55;
+            font-weight: 400;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            line-height: 1.12;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-2);
+          }
+          h1 {
+            font-size: 42px;
+          }
+          h2 {
+            font-size: 32px;
+          }
+          h3 {
+            font-size: 25px;
+          }
+          h4 {
+            font-size: 20px;
+          }
+          h5 {
+            font-size: 16px;
+          }
+          h6 {
+            font-size: 13px;
+          }
+          h6 {
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+          p {
+            margin: 0 0 var(--space-3);
+          }
+          a {
+            color: var(--color-accent);
+            text-underline-offset: 3px;
+          }
+          img {
+            display: block;
+            max-width: 100%;
+          }
+          figure {
+            margin: 0;
+          }
+          figcaption {
+            font-size: 11px;
+            margin-top: var(--space-1);
+            color: color-mix(in srgb, var(--color-text) 55%, transparent);
+          }
+          .text-muted {
+            color: color-mix(in srgb, var(--color-text) 55%, transparent);
+          }
+          :focus {
+            outline: none;
+          }
+          :focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+          }
+          ::selection {
+            background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+          }
+
+          /* — rules — */
+          .hr {
+            height: 1px;
+            border: 0;
+            margin: var(--space-4) 0;
+            background: var(--color-divider);
+          }
+
+          /* — buttons — */
+          .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            font-size: 14px;
+            line-height: 1.2;
+            color: var(
+              --color-text
+            ); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+            background: transparent;
+            border: 1px solid transparent;
+            padding: var(--space-2) calc(var(--space-3) * 1.2);
+            border-radius: var(--radius-md);
+          }
+          .btn svg {
+            display: block;
+          }
+          .btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+          }
+          .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-bg);
+          }
+          .btn-primary:hover {
+            background: var(--color-accent-600);
+          }
+          .btn-primary:active {
+            background: var(--color-accent-700);
+          }
+          .btn-secondary {
+            border-color: var(--color-divider);
+          }
+          .btn-secondary:hover {
+            background: color-mix(in srgb, var(--color-text) 7%, transparent);
+          }
+          .btn-secondary:active {
+            background: color-mix(in srgb, var(--color-text) 14%, transparent);
+          }
+          .btn-ghost {
+            color: var(--color-accent);
+            padding-inline: var(--space-1);
+          }
+          .btn-ghost:hover {
+            background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+          }
+          .btn-ghost:active {
+            background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+          }
+          .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+          }
+          .btn-block {
+            width: 100%;
+            margin-top: var(--space-2);
+          }
+
+          /* — forms — */
+          .field > label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: color-mix(in srgb, var(--color-text) 70%, transparent);
+          }
+          .input {
+            width: 100%;
+            min-height: 36px;
+            padding: 6px 10px;
+            font: inherit;
+            font-size: 14px;
+            color: var(--color-text);
+            caret-color: var(--color-accent);
+            background: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-md);
+          }
+          .input:hover {
+            border-color: color-mix(in srgb, var(--color-text) 45%, transparent);
+          }
+          .input:focus-visible {
+            border-color: var(--color-accent);
+            outline-offset: 0;
+          }
+          textarea.input {
+            min-height: 90px;
+            resize: vertical;
+          }
+          .radio {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+          .radio input,
+          .seg-opt input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+          }
+          .radio .dot {
+            width: 16px;
+            height: 16px;
+            flex: none;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-divider);
+          }
+          .radio:hover .dot {
+            border-color: var(--color-accent);
+          }
+          .radio input:checked + .dot {
+            border-color: var(--color-accent);
+            background: var(--color-accent);
+            box-shadow: inset 0 0 0 4px var(--color-bg);
+          }
+          .radio input:focus-visible + .dot {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+          }
+          .seg {
+            display: inline-flex;
+            overflow: hidden;
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-md);
+          }
+          .seg-opt {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            font-size: 13px;
+            cursor: pointer;
+          }
+          .seg-opt + .seg-opt {
+            border-left: 1px solid var(--color-divider);
+          }
+          .seg-opt:has(input:checked) {
+            background: var(--color-accent);
+            color: var(--color-bg);
+          }
+          .seg-opt:not(:has(input:checked)):hover {
+            background: color-mix(in srgb, var(--color-text) 7%, transparent);
+          }
+          .seg-opt:has(input:focus-visible) {
+            outline: 2px solid var(--color-accent);
+            outline-offset: -2px;
+          }
+
+          /* — cards — */
+          .card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+          }
+          .card-kicker {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+          }
+          .card-title {
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            font-size: 17px;
+            line-height: 1.2;
+          }
+          .card-body {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.8;
+            flex: 1;
+          }
+          .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: color-mix(in srgb, var(--color-text) 50%, transparent);
+          }
+          .elev-sm {
+            box-shadow: var(--shadow-sm);
+          }
+          .elev-md {
+            box-shadow: var(--shadow-md);
+          }
+          .elev-lg {
+            box-shadow: var(--shadow-lg);
+          }
+
+          /* — tags — */
+          .tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            padding: 3px 10px;
+            border-radius: calc(var(--radius-md) * 0.75);
+          }
+          .tag-accent {
+            background: var(--color-accent-100);
+            color: var(--color-accent-800);
+          }
+          .tag-accent-2 {
+            background: var(--color-accent-2-100);
+            color: var(--color-accent-2-800);
+          }
+          .tag-neutral {
+            background: var(--color-neutral-100);
+            color: var(--color-neutral-800);
+          }
+          .tag-outline {
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+          }
+
+          /* — navigation — */
+          .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-3) var(--space-4);
+            border-bottom: none;
+          }
+          .nav-brand {
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            font-size: 18px;
+            margin-right: auto;
+          }
+          .nav a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 14px;
+          }
+          .nav a:hover,
+          .nav a[aria-current='page'] {
+            color: var(--color-accent);
+          }
+
+          /* — tables — */
+          .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+          }
+          .table th {
+            text-align: left;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--color-text) 60%, transparent);
+            padding: var(--space-2);
+            border-bottom: 1px solid var(--color-divider);
+          }
+          .table td {
+            padding: var(--space-2);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+          }
+          .table tbody tr:hover {
+            background: color-mix(in srgb, var(--color-text) 4%, transparent);
+          }
+
+          /* — dialog — */
+          .dialog-backdrop {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            padding: var(--space-4);
+            background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+          }
+          .dialog {
+            width: min(440px, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            box-shadow: var(--shadow-lg);
+          }
+          .dialog-title {
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            font-size: 20px;
+          }
+          .dialog-body {
+            font-size: 14px;
+            opacity: 0.85;
+          }
+          .dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+          }
+
+          /* — blueprint frame: components are wireframe objects (see .blueprint
+     and .corner above) — square, transparent, hairline-bordered — */
+          .card,
+          .btn,
+          .input,
+          .tag,
+          .seg,
+          .dialog {
+            border-radius: 0;
+          }
+          .card,
+          .dialog {
+            background: transparent;
+            border: 1px solid var(--color-divider);
+          }
+          .btn {
+            border: 1px solid var(--color-divider);
+          }
+          .btn-primary {
+            border-color: var(--color-accent);
+          }
+          .btn-ghost {
+            border-color: transparent;
+          }
+        </style>
+        <script src="a0fe524c-b9ed-426f-a1d0-2db21c9bb71e"></script>
+        <style>
+          :root {
+            --color-accent: #2f7dd1;
+            --color-accent-100: #e8f2ff;
+            --color-accent-200: #c9e1ff;
+            --color-accent-300: #99c9ff;
+            --color-accent-400: #5fabf7;
+            --color-accent-500: #2f8ee8;
+            --color-accent-600: #1c72c9;
+            --color-accent-700: #14589e;
+            --color-accent-800: #0f4176;
+            --color-accent-900: #0b2c50;
+          }
+          body {
+            margin: 0;
+          }
+          a {
+            color: var(--color-accent-600);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--color-accent-700);
+          }
+        </style>
+      </helmet>
+
+      <div
+        style="
+          padding: 56px 64px 96px;
+          display: flex;
+          flex-direction: column;
+          gap: 72px;
+          background: var(--color-neutral-200);
+        "
+      >
+        <div style="display: flex; flex-direction: column; gap: 6px; max-width: 760px">
+          <h6 style="margin: 0; color: var(--color-accent)">Smart Calendar / UI</h6>
+          <h1 style="margin: 0; font-size: 52px">Умный календарь</h1>
+          <p style="margin: 0; font-size: 16px; max-width: 620px">
+            Экраны фронтенда на контракте существующего API: авторизация по JWT, месячная сетка
+            вхождений, редактор правила повторения RRULE, работа с отдельным вхождением серии и
+            push-уведомления.
+          </p>
+        </div>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Календарь</h2>
+            <span class="text-muted" style="font-size: 13px"
+              >GET /events?from=&amp;to= — вхождения за видимый диапазон</span
+            >
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; align-items: baseline; gap: 10px">
+              <span class="tag tag-outline" style="font-family: var(--font-heading)">2a</span>
+              <span style="font-family: var(--font-heading); font-size: 20px"
+                >Месячная сетка — главный экран</span
+              >
+            </div>
+            <div class="blueprint" style="width: 1240px; background: var(--color-bg)">
+              <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+              ><i class="corner br"></i>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 18px;
+                  padding: 9px 16px;
+                  border-bottom: 1px solid var(--color-divider);
+                "
+              >
+                <span style="font-family: var(--font-heading); font-weight: 600; font-size: 18px"
+                  >Умный календарь</span
+                >
+                <div style="display: flex; gap: 14px; font-size: 14px">
+                  <span style="color: var(--color-accent)">Календарь</span>
+                  <span class="text-muted">Уведомления</span>
+                  <span class="text-muted">Профиль</span>
+                </div>
+                <div style="margin-left: auto; display: flex; align-items: center; gap: 8px">
+                  <button class="btn btn-secondary btn-icon" aria-label="Уведомления">
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M10.268 21a2 2 0 0 0 3.464 0"></path>
+                      <path
+                        d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="btn btn-primary">
+                    <svg
+                      width="15"
+                      height="15"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path></svg
+                    >Событие
+                  </button>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 7px;
+                      padding-left: 10px;
+                      margin-left: 2px;
+                      border-left: 1px solid var(--color-divider);
+                      font-size: 13px;
+                    "
+                  >
+                    <span
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        display: grid;
+                        place-items: center;
+                        border: 1px solid var(--color-divider);
+                        font-family: var(--font-heading);
+                        font-size: 12px;
+                      "
+                      >ПК</span
+                    >petr@example.com
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px">
+                <button class="btn btn-secondary btn-icon" aria-label="Назад">
+                  <svg
+                    width="17"
+                    height="17"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m15 18-6-6 6-6"></path>
+                  </svg>
+                </button>
+                <button class="btn btn-secondary btn-icon" aria-label="Вперёд">
+                  <svg
+                    width="17"
+                    height="17"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+                <button class="btn btn-secondary">Сегодня</button>
+                <h3 style="margin: 0 0 0 8px; font-size: 25px">Август 2026</h3>
+                <div class="seg" style="margin-left: auto">
+                  <label class="seg-opt"><input type="radio" name="v2a" checked="" />Месяц</label>
+                  <label class="seg-opt"><input type="radio" name="v2a" />Неделя</label>
+                  <label class="seg-opt"><input type="radio" name="v2a" />День</label>
+                  <label class="seg-opt"><input type="radio" name="v2a" />Список</label>
+                </div>
+                <span class="tag tag-neutral" style="margin-left: 4px">Europe/Moscow</span>
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(7, 1fr);
+                  border-top: 1px solid var(--color-divider);
+                  border-left: 1px solid var(--color-divider);
+                "
+              >
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Пн
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Вт
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Ср
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Чт
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Пт
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Сб
+                </div>
+                <div
+                  style="
+                    padding: 5px 8px;
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    border-right: 1px solid var(--color-divider);
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  Вс
+                </div>
+                <sc-for list="{{ days }}" as="d" hint-placeholder-count="42">
+                  <div
+                    style="min-height:106px;padding:6px 7px 8px;display:flex;flex-direction:column;gap:3px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);background:{{ d.bg }}"
+                  >
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 1px">
+                      <span
+                        style="font-family:var(--font-heading);font-weight:600;font-size:15px;line-height:1;padding:3px 5px;color:{{ d.numFg }};background:{{ d.numBg }}"
+                        >{{ d.n }}</span
+                      >
+                      <sc-if value="{{ d.label }}" hint-placeholder-val="{{ false }}"
+                        ><span class="text-muted" style="font-size: 11px"
+                          >{{ d.label }}</span
+                        ></sc-if
+                      >
+                    </div>
+                    <sc-for list="{{ d.events }}" as="ev" hint-placeholder-count="2">
+                      <div
+                        style="display:flex;align-items:center;gap:5px;padding:1px 5px 1px 4px;font-size:11px;line-height:1.45;border-left:2px solid {{ ev.bd }};background:{{ ev.bg }};white-space:nowrap;overflow:hidden"
+                      >
+                        <span
+                          style="
+                            font-variant-numeric: tabular-nums;
+                            color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                          "
+                          >{{ ev.t }}</span
+                        >
+                        <span style="overflow: hidden; text-overflow: ellipsis"
+                          >{{ ev.title }}</span
+                        >
+                      </div>
+                    </sc-for>
+                    <sc-if value="{{ d.more }}" hint-placeholder-val="{{ false }}"
+                      ><span class="text-muted" style="font-size: 11px; padding-left: 4px"
+                        >{{ d.more }}</span
+                      ></sc-if
+                    >
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 32px; flex-wrap: wrap">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">2b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Недельный вид</span>
+              </div>
+              <div class="blueprint" style="width: 820px; background: var(--color-bg)">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 16px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <button class="btn btn-secondary btn-icon" aria-label="Назад">
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button class="btn btn-secondary btn-icon" aria-label="Вперёд">
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </button>
+                  <h4 style="margin: 0 0 0 8px">10 — 16 августа 2026</h4>
+                  <div class="seg" style="margin-left: auto">
+                    <label class="seg-opt"><input type="radio" name="v2b" />Месяц</label>
+                    <label class="seg-opt"
+                      ><input type="radio" name="v2b" checked="" />Неделя</label
+                    >
+                    <label class="seg-opt"><input type="radio" name="v2b" />День</label>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 56px repeat(7, 1fr)">
+                  <div
+                    style="
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                    "
+                  ></div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Пн
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">10</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                      background: var(--color-accent-200);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: var(--color-accent-700);
+                      "
+                    >
+                      Вт
+                    </div>
+                    <div
+                      style="
+                        font-family: var(--font-heading);
+                        font-size: 17px;
+                        color: var(--color-accent-800);
+                      "
+                    >
+                      11
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Ср
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">12</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Чт
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">13</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Пт
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">14</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-right: 1px solid var(--color-divider);
+                      border-bottom: 1px solid var(--color-divider);
+                      background: var(--color-neutral-100);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Сб
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">15</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 6px 8px;
+                      border-bottom: 1px solid var(--color-divider);
+                      background: var(--color-neutral-100);
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      Вс
+                    </div>
+                    <div style="font-family: var(--font-heading); font-size: 17px">16</div>
+                  </div>
+
+                  <div style="border-right: 1px solid var(--color-divider)">
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      08:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      09:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      10:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      11:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      12:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      13:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      14:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      15:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      16:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      17:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                        border-bottom: 1px solid
+                          color-mix(in srgb, var(--color-text) 7%, transparent);
+                      "
+                    >
+                      18:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      19:00
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 96px;
+                        left: 3px;
+                        right: 3px;
+                        height: 22px;
+                        padding: 1px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      10:00 Стендап
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 168px;
+                        left: 3px;
+                        right: 3px;
+                        height: 46px;
+                        padding: 3px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      <div style="font-family: var(--font-heading); font-size: 13px">
+                        Планирование
+                      </div>
+                      11:30 — 12:30
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 96px;
+                        left: 3px;
+                        right: 3px;
+                        height: 22px;
+                        padding: 1px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      10:00 Стендап
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 528px;
+                        left: 3px;
+                        right: 3px;
+                        height: 46px;
+                        padding: 3px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-400);
+                        background: var(--color-neutral-100);
+                        overflow: hidden;
+                      "
+                    >
+                      <div style="font-family: var(--font-heading); font-size: 13px">
+                        Тренировка
+                      </div>
+                      19:00 — 20:00
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 160px;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background: var(--color-accent);
+                        z-index: 2;
+                      "
+                    >
+                      <span
+                        style="
+                          position: absolute;
+                          left: -4px;
+                          top: -3px;
+                          width: 7px;
+                          height: 7px;
+                          background: var(--color-accent);
+                          border-radius: 50%;
+                        "
+                      ></span>
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 96px;
+                        left: 3px;
+                        right: 3px;
+                        height: 22px;
+                        padding: 1px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      10:00 Стендап
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 240px;
+                        left: 3px;
+                        right: 3px;
+                        height: 46px;
+                        padding: 3px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px dashed var(--color-accent-700);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      <div
+                        style="
+                          font-family: var(--font-heading);
+                          font-size: 13px;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                      >
+                        Созвон с заказчиком
+                      </div>
+                      <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                        13:00 · перенесено
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 336px;
+                        left: 3px;
+                        right: 3px;
+                        height: 34px;
+                        padding: 2px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      <div
+                        style="
+                          font-family: var(--font-heading);
+                          font-size: 13px;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                      >
+                        1-на-1 с Аней
+                      </div>
+                      <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                        15:00
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 96px;
+                        left: 3px;
+                        right: 3px;
+                        height: 22px;
+                        padding: 1px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      10:00 Стендап
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 528px;
+                        left: 3px;
+                        right: 3px;
+                        height: 46px;
+                        padding: 3px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-400);
+                        background: var(--color-neutral-100);
+                        overflow: hidden;
+                      "
+                    >
+                      <div style="font-family: var(--font-heading); font-size: 13px">
+                        Тренировка
+                      </div>
+                      19:00 — 20:00
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 96px;
+                        left: 3px;
+                        right: 3px;
+                        height: 22px;
+                        padding: 1px 5px;
+                        font-size: 11px;
+                        line-height: 1.3;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                        overflow: hidden;
+                      "
+                    >
+                      10:00 Стендап
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      position: relative;
+                      height: 576px;
+                      border-right: 1px solid var(--color-divider);
+                      background: var(--color-neutral-100);
+                    "
+                  ></div>
+                  <div
+                    style="position: relative; height: 576px; background: var(--color-neutral-100)"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">2c</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Дневной вид</span>
+              </div>
+              <div class="blueprint" style="width: 360px; background: var(--color-bg)">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 14px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <button class="btn btn-secondary btn-icon" aria-label="Назад">
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button class="btn btn-secondary btn-icon" aria-label="Вперёд">
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </button>
+                  <div style="margin-left: 4px">
+                    <h4 style="margin: 0">Вторник, 11 августа</h4>
+                    <span class="text-muted" style="font-size: 12px"
+                      >2 события · Europe/Moscow</span
+                    >
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 52px 1fr">
+                  <div style="border-right: 1px solid var(--color-divider)">
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      09:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      10:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      11:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      12:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      13:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      14:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      15:00
+                    </div>
+                    <div
+                      style="
+                        height: 48px;
+                        padding: 0 6px;
+                        text-align: right;
+                        font-size: 11px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                      "
+                    >
+                      16:00
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      height: 384px;
+                      background: repeating-linear-gradient(
+                        to bottom,
+                        transparent 0 47px,
+                        color-mix(in srgb, var(--color-text) 7%, transparent) 47px 48px
+                      );
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 48px;
+                        left: 6px;
+                        right: 10px;
+                        height: 24px;
+                        padding: 2px 7px;
+                        font-size: 12px;
+                        line-height: 1.4;
+                        border-left: 2px solid var(--color-accent-600);
+                        background: var(--color-accent-200);
+                      "
+                    >
+                      10:00 — 10:15 Стендап
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 112px;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background: var(--color-accent);
+                        z-index: 2;
+                      "
+                    >
+                      <span
+                        style="
+                          position: absolute;
+                          left: -1px;
+                          top: -3px;
+                          width: 7px;
+                          height: 7px;
+                          background: var(--color-accent);
+                          border-radius: 50%;
+                        "
+                      ></span
+                      ><span
+                        style="
+                          position: absolute;
+                          right: 4px;
+                          top: -9px;
+                          font-size: 10px;
+                          font-variant-numeric: tabular-nums;
+                          color: var(--color-accent-700);
+                          background: var(--color-bg);
+                          padding: 0 3px;
+                        "
+                        >11:20</span
+                      >
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 288px;
+                        left: 6px;
+                        right: 10px;
+                        height: 70px;
+                        padding: 5px 7px;
+                        font-size: 12px;
+                        line-height: 1.4;
+                        border-left: 2px solid var(--color-accent-400);
+                        background: var(--color-neutral-100);
+                      "
+                    >
+                      <div style="font-family: var(--font-heading); font-size: 15px">
+                        Тренировка
+                      </div>
+                      15:00 — 16:00
+                      <div class="text-muted" style="font-size: 11px">Напоминание за 30 мин</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; align-items: baseline; gap: 10px">
+              <span class="tag tag-outline" style="font-family: var(--font-heading)">2d</span>
+              <span style="font-family: var(--font-heading); font-size: 20px"
+                >Список ближайших событий</span
+              >
+            </div>
+            <div
+              class="blueprint"
+              style="width: 560px; background: var(--color-bg); padding: 16px 18px 18px"
+            >
+              <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+              ><i class="corner br"></i>
+              <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px">
+                <h4 style="margin: 0">Ближайшие события</h4>
+                <span class="text-muted" style="font-size: 12px; margin-left: auto"
+                  >11 — 21 августа</span
+                >
+              </div>
+              <sc-for list="{{ agenda }}" as="g" hint-placeholder-count="4">
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 104px 1fr;
+                    gap: 12px;
+                    padding: 10px 0;
+                    border-top: 1px solid var(--color-divider);
+                  "
+                >
+                  <div>
+                    <div
+                      style="font-family: var(--font-heading); font-weight: 600; font-size: 16px"
+                    >
+                      {{ g.day }}
+                    </div>
+                    <div
+                      class="text-muted"
+                      style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase"
+                    >
+                      {{ g.dow }}
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 6px">
+                    <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+                      <div style="display: flex; align-items: baseline; gap: 10px; font-size: 14px">
+                        <span
+                          style="
+                            font-variant-numeric: tabular-nums;
+                            color: color-mix(in srgb, var(--color-text) 60%, transparent);
+                            min-width: 88px;
+                          "
+                          >{{ it.t }}</span
+                        >
+                        <span>{{ it.title }}</span>
+                        <sc-if value="{{ it.tag }}" hint-placeholder-val="{{ false }}"
+                          ><span class="tag tag-accent">{{ it.tag }}</span></sc-if
+                        >
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Событие</h2>
+            <span class="text-muted" style="font-size: 13px"
+              >POST /events · PATCH /events/:id · операции над вхождением серии</span
+            >
+          </div>
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">3a</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Панель события</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 400px;
+                  background: var(--color-bg);
+                  padding: 16px 18px 18px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div style="display: flex; align-items: flex-start; gap: 10px">
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px">
+                      <span
+                        style="width: 10px; height: 10px; background: var(--color-accent-600)"
+                      ></span>
+                      <span class="tag tag-accent">Повторяется</span>
+                    </div>
+                    <h3 style="margin: 0">Стендап</h3>
+                  </div>
+                  <button
+                    class="btn btn-secondary btn-icon"
+                    style="margin-left: auto"
+                    aria-label="Закрыть"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M18 6 6 18"></path>
+                      <path d="m6 6 12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    gap: 6px 14px;
+                    font-size: 14px;
+                  "
+                >
+                  <span class="text-muted">Когда</span><span>Вт, 11 августа, 10:00 — 10:15</span>
+                  <span class="text-muted">Правило</span><span>Пн—Пт, каждую неделю</span>
+                  <span class="text-muted">До</span><span>31 декабря 2026</span>
+                  <span class="text-muted">Таймзона</span><span>Europe/Moscow</span>
+                  <span class="text-muted">Напомнить</span><span>За 10 минут</span>
+                </div>
+                <p style="margin: 0; font-size: 13px; opacity: 0.85">
+                  Короткая синхронизация команды. Ссылка на созвон — в описании задачи.
+                </p>
+                <div
+                  style="
+                    border-top: 1px solid var(--color-divider);
+                    padding-top: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                  "
+                >
+                  <h6 style="margin: 0; color: var(--color-accent)">Это вхождение · 11 августа</h6>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <button class="btn btn-secondary">
+                      <svg
+                        width="15"
+                        height="15"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M12 3v18"></path>
+                        <path d="m16 7 4 5-4 5"></path>
+                        <path d="m8 7-4 5 4 5"></path></svg
+                      >Перенести
+                    </button>
+                    <button class="btn btn-secondary">
+                      <svg
+                        width="15"
+                        height="15"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path></svg
+                      >Удалить только это
+                    </button>
+                    <button class="btn btn-ghost" disabled="">Вернуть по правилу</button>
+                  </div>
+                  <span class="text-muted" style="font-size: 12px"
+                    >Вхождение не отличается от правила серии.</span
+                  >
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid var(--color-divider);
+                    padding-top: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                  "
+                >
+                  <h6 style="margin: 0; color: var(--color-accent)">Вся серия</h6>
+                  <div style="display: flex; gap: 8px">
+                    <button class="btn btn-primary">Изменить серию</button>
+                    <button class="btn btn-secondary">
+                      <svg
+                        width="15"
+                        height="15"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg
+                      >Удалить серию
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">3b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Создание события</span
+                >
+                <span class="text-muted" style="font-size: 12px">с ошибкой валидации</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 420px;
+                  background: var(--color-bg);
+                  padding: 16px 18px 18px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div style="display: flex; align-items: center">
+                  <h3 style="margin: 0">Новое событие</h3>
+                  <button
+                    class="btn btn-secondary btn-icon"
+                    style="margin-left: auto"
+                    aria-label="Закрыть"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M18 6 6 18"></path>
+                      <path d="m6 6 12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div class="field">
+                  <label>Название</label><input class="input" value="Спринт-ревью" />
+                </div>
+                <div class="field">
+                  <label>Описание</label
+                  ><textarea class="input" style="min-height: 64px">
+Демо результатов спринта, приглашены стейкхолдеры.</textarea>
+                </div>
+                <label class="radio" style="gap: 10px"
+                  ><input type="checkbox" /><span class="dot"></span>Весь день</label
+                >
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
+                  <div class="field">
+                    <label>Начало</label>
+                    <div style="display: flex; gap: 6px">
+                      <input class="input" value="21.08.2026" /><input
+                        class="input"
+                        style="width: 80px"
+                        value="17:00"
+                      />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Конец</label>
+                    <div style="display: flex; gap: 6px">
+                      <input
+                        class="input"
+                        style="border-color: var(--color-accent-700)"
+                        value="21.08.2026"
+                      /><input
+                        class="input"
+                        style="width: 80px; border-color: var(--color-accent-700)"
+                        value="16:00"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 7px;
+                    align-items: flex-start;
+                    padding: 7px 9px;
+                    border-left: 2px solid var(--color-accent-600);
+                    background: var(--color-accent-200);
+                    font-size: 12px;
+                    color: var(--color-accent-900);
+                  "
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="flex: none; margin-top: 1px"
+                  >
+                    <path
+                      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+                    ></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  Событие должно заканчиваться позже, чем начинается
+                </div>
+                <div class="field">
+                  <label>Повторение</label>
+                  <div style="display: flex; gap: 7px; flex-wrap: wrap">
+                    <div class="seg">
+                      <label class="seg-opt"><input type="radio" name="rep3b" />Нет</label>
+                      <label class="seg-opt"><input type="radio" name="rep3b" />Ежедневно</label>
+                      <label class="seg-opt"><input type="radio" name="rep3b" />По будням</label>
+                      <label class="seg-opt"><input type="radio" name="rep3b" />Еженедельно</label>
+                      <label class="seg-opt"
+                        ><input type="radio" name="rep3b" checked="" />Своё</label
+                      >
+                    </div>
+                    <button class="btn btn-ghost">Настроить…</button>
+                  </div>
+                  <div
+                    style="
+                      margin-top: 7px;
+                      display: flex;
+                      align-items: center;
+                      gap: 7px;
+                      font-size: 12px;
+                    "
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      style="color: var(--color-accent)"
+                    >
+                      <path d="m17 2 4 4-4 4"></path>
+                      <path d="M3 11v-1a4 4 0 0 1 4-4h14"></path>
+                      <path d="m7 22-4-4 4-4"></path>
+                      <path d="M21 13v1a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                    Каждые 2 недели, пятница — до 31 дек 2026
+                  </div>
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: end"
+                >
+                  <div class="field">
+                    <label>Таймзона</label><input class="input" value="Europe/Moscow" />
+                  </div>
+                  <div class="field">
+                    <label>Цвет</label>
+                    <div style="display: flex; gap: 6px">
+                      <span
+                        style="
+                          width: 26px;
+                          height: 26px;
+                          background: var(--color-accent-600);
+                          outline: 1px solid var(--color-text);
+                          outline-offset: 2px;
+                        "
+                      ></span>
+                      <span
+                        style="width: 26px; height: 26px; background: var(--color-accent-500)"
+                      ></span>
+                      <span
+                        style="width: 26px; height: 26px; background: var(--color-accent-300)"
+                      ></span>
+                      <span
+                        style="width: 26px; height: 26px; background: var(--color-neutral-600)"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Напоминания</label>
+                  <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap">
+                    <span class="tag tag-accent" style="gap: 6px">За 30 мин ×</span>
+                    <span class="tag tag-accent" style="gap: 6px">За 1 день ×</span>
+                    <button class="btn btn-ghost">+ Добавить</button>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 8px;
+                    border-top: 1px solid var(--color-divider);
+                    padding-top: 12px;
+                  "
+                >
+                  <button class="btn btn-secondary">Отмена</button>
+                  <button class="btn btn-primary">Сохранить</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">3c</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Редактор правила повторения</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 520px;
+                  height: 520px;
+                  background: var(--color-neutral-300);
+                  display: grid;
+                  place-items: center;
+                  padding: 20px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  class="dialog elev-lg blueprint"
+                  style="width: 440px; background: var(--color-bg)"
+                >
+                  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                  ><i class="corner br"></i>
+                  <div class="dialog-title">Повторение</div>
+                  <div class="field">
+                    <label>Частота</label>
+                    <div class="seg">
+                      <label class="seg-opt"><input type="radio" name="f3c" />День</label>
+                      <label class="seg-opt"
+                        ><input type="radio" name="f3c" checked="" />Неделя</label
+                      >
+                      <label class="seg-opt"><input type="radio" name="f3c" />Месяц</label>
+                      <label class="seg-opt"><input type="radio" name="f3c" />Год</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Повторять каждые</label>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <input class="input" style="width: 64px" value="2" /><span
+                        style="font-size: 14px"
+                        >недели</span
+                      >
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>В дни</label>
+                    <div style="display: flex; gap: 5px">
+                      <span class="tag tag-neutral" style="width: 34px; justify-content: center"
+                        >Пн</span
+                      >
+                      <span class="tag tag-neutral" style="width: 34px; justify-content: center"
+                        >Вт</span
+                      >
+                      <span class="tag tag-neutral" style="width: 34px; justify-content: center"
+                        >Ср</span
+                      >
+                      <span class="tag tag-neutral" style="width: 34px; justify-content: center"
+                        >Чт</span
+                      >
+                      <span
+                        class="tag"
+                        style="
+                          width: 34px;
+                          justify-content: center;
+                          background: var(--color-accent);
+                          color: var(--color-bg);
+                        "
+                        >Пт</span
+                      >
+                      <span
+                        class="tag tag-neutral"
+                        style="width: 34px; justify-content: center; opacity: 0.5"
+                        >Сб</span
+                      >
+                      <span
+                        class="tag tag-neutral"
+                        style="width: 34px; justify-content: center; opacity: 0.5"
+                        >Вс</span
+                      >
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Заканчивается</label>
+                    <div style="display: flex; flex-direction: column; gap: 7px">
+                      <label class="radio"
+                        ><input type="radio" name="e3c" /><span class="dot"></span>Никогда</label
+                      >
+                      <label class="radio"
+                        ><input type="radio" name="e3c" checked="" /><span class="dot"></span
+                        >Дата<input
+                          class="input"
+                          style="width: 120px; margin-left: 6px"
+                          value="31.12.2026"
+                      /></label>
+                      <label class="radio"
+                        ><input type="radio" name="e3c" /><span class="dot"></span>После<input
+                          class="input"
+                          style="width: 64px; margin-left: 6px"
+                          value="10"
+                        />повторений</label
+                      >
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      gap: 3px;
+                      padding: 8px 10px;
+                      background: var(--color-neutral-100);
+                      font-size: 12px;
+                    "
+                  >
+                    <span>Каждые 2 недели по пятницам, до 31 декабря 2026 — 10 вхождений</span>
+                    <code style="font-size: 11px; color: var(--color-accent-700)"
+                      >FREQ=WEEKLY;INTERVAL=2;BYDAY=FR;UNTIL=20261231T000000Z</code
+                    >
+                  </div>
+                  <div class="dialog-actions">
+                    <button class="btn btn-secondary">Отмена</button>
+                    <button class="btn btn-primary">Применить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Авторизация</h2>
+            <span class="text-muted" style="font-size: 13px"
+              >POST /auth/login · POST /auth/register — access-токен в памяти, refresh в
+              httpOnly-cookie</span
+            >
+          </div>
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">1a</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Вход</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 720px;
+                  height: 460px;
+                  background: var(--color-bg);
+                  display: grid;
+                  grid-template-columns: 1fr 320px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    padding: 28px 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    border-right: 1px solid var(--color-divider);
+                    background: var(--color-accent-900);
+                    color: var(--color-bg);
+                  "
+                >
+                  <div>
+                    <h6 style="margin: 0 0 10px; color: var(--color-accent-300)">Smart Calendar</h6>
+                    <h2 style="margin: 0 0 8px; color: var(--color-bg)">Умный календарь</h2>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.85; max-width: 280px">
+                      События с повторениями по RRULE и напоминания в браузере перед началом.
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: auto 1fr;
+                      gap: 5px 12px;
+                      font-size: 12px;
+                      opacity: 0.8;
+                    "
+                  >
+                    <span>01</span><span>Повторяющиеся встречи одной строкой правила</span>
+                    <span>02</span><span>Перенос и отмена отдельного вхождения</span> <span>03</span
+                    ><span>Push-напоминания через Service Worker</span>
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 28px 26px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 14px;
+                    justify-content: center;
+                  "
+                >
+                  <h3 style="margin: 0">Вход</h3>
+                  <div class="field">
+                    <label>Email</label><input class="input" value="petr@example.com" />
+                  </div>
+                  <div class="field">
+                    <label>Пароль</label><input class="input" type="password" value="••••••••••" />
+                  </div>
+                  <button class="btn btn-primary btn-block">Войти</button>
+                  <div style="display: flex; justify-content: space-between; font-size: 13px">
+                    <a href="#1c">Создать аккаунт</a>
+                    <span class="text-muted">Забыли пароль?</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">1b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Ошибка входа</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 320px;
+                  background: var(--color-bg);
+                  padding: 26px 24px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <h3 style="margin: 0">Вход</h3>
+                <div
+                  style="
+                    display: flex;
+                    gap: 7px;
+                    align-items: flex-start;
+                    padding: 8px 10px;
+                    border-left: 2px solid var(--color-accent-600);
+                    background: var(--color-accent-200);
+                    font-size: 12px;
+                    color: var(--color-accent-900);
+                  "
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="flex: none; margin-top: 1px"
+                  >
+                    <path
+                      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+                    ></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  Неверный email или пароль
+                </div>
+                <div class="field">
+                  <label>Email</label
+                  ><input
+                    class="input"
+                    style="border-color: var(--color-accent-700)"
+                    value="petr@example.com"
+                  />
+                </div>
+                <div class="field">
+                  <label>Пароль</label
+                  ><input
+                    class="input"
+                    style="border-color: var(--color-accent-700)"
+                    type="password"
+                    value="•••••"
+                  />
+                </div>
+                <button class="btn btn-primary btn-block">Войти</button>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">1c</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Регистрация</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 320px;
+                  background: var(--color-bg);
+                  padding: 26px 24px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div>
+                  <h3 style="margin: 0 0 4px">Регистрация</h3>
+                  <span class="text-muted" style="font-size: 13px"
+                    >Таймзона определяется браузером, её можно сменить позже.</span
+                  >
+                </div>
+                <div class="field">
+                  <label>Email</label><input class="input" value="petr@example" />
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 7px;
+                    align-items: flex-start;
+                    padding: 7px 9px;
+                    border-left: 2px solid var(--color-accent-600);
+                    background: var(--color-accent-200);
+                    font-size: 12px;
+                    color: var(--color-accent-900);
+                    margin-top: -8px;
+                  "
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="flex: none; margin-top: 1px"
+                  >
+                    <path
+                      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+                    ></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  Введите корректный email
+                </div>
+                <div class="field">
+                  <label>Пароль</label><input class="input" type="password" value="•••••" />
+                  <span class="text-muted" style="font-size: 11px; display: block; margin-top: 4px"
+                    >От 8 до 72 символов</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 7px;
+                    align-items: flex-start;
+                    padding: 7px 9px;
+                    border-left: 2px solid var(--color-accent-600);
+                    background: var(--color-accent-200);
+                    font-size: 12px;
+                    color: var(--color-accent-900);
+                  "
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="flex: none; margin-top: 1px"
+                  >
+                    <path
+                      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+                    ></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  Пароль должен быть не короче 8 символов
+                </div>
+                <div class="field">
+                  <label>Таймзона</label><input class="input" value="Europe/Moscow" />
+                </div>
+                <button class="btn btn-primary btn-block">Создать аккаунт</button>
+                <div style="font-size: 13px">
+                  <span class="text-muted">Уже есть аккаунт? </span><a href="#1a">Войти</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Настройки</h2>
+            <span class="text-muted" style="font-size: 13px">/notifications/* · /auth/me</span>
+          </div>
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">5a</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Уведомления и устройства</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 620px;
+                  background: var(--color-bg);
+                  padding: 18px 20px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 16px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <h3 style="margin: 0">Уведомления</h3>
+                <div
+                  class="card blueprint"
+                  style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 14px"
+                >
+                  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                  ><i class="corner br"></i>
+                  <svg
+                    width="22"
+                    height="22"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    style="color: var(--color-accent); flex: none"
+                  >
+                    <path d="M10.268 21a2 2 0 0 0 3.464 0"></path>
+                    <path
+                      d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                    ></path>
+                  </svg>
+                  <div style="flex: 1">
+                    <div style="font-family: var(--font-heading); font-size: 17px">
+                      Push в этом браузере
+                    </div>
+                    <span class="text-muted" style="font-size: 12px"
+                      >Разрешение не запрошено. Напоминания приходят, даже если вкладка
+                      закрыта.</span
+                    >
+                  </div>
+                  <button class="btn btn-primary">Разрешить</button>
+                </div>
+                <div>
+                  <h6 style="margin: 0 0 6px; color: var(--color-accent)">
+                    Подписанные устройства
+                  </h6>
+                  <sc-raw-table class="table">
+                    <sc-raw-thead
+                      ><sc-raw-tr
+                        ><sc-raw-th>Устройство</sc-raw-th><sc-raw-th>Браузер</sc-raw-th
+                        ><sc-raw-th>Добавлено</sc-raw-th><sc-raw-th></sc-raw-th></sc-raw-tr
+                    ></sc-raw-thead>
+                    <sc-raw-tbody>
+                      <sc-raw-tr
+                        ><sc-raw-td>MacBook Pro</sc-raw-td><sc-raw-td>Chrome 142</sc-raw-td
+                        ><sc-raw-td>4 августа</sc-raw-td
+                        ><sc-raw-td style="text-align: right"
+                          ><button class="btn btn-ghost">Отключить</button></sc-raw-td
+                        ></sc-raw-tr
+                      >
+                      <sc-raw-tr
+                        ><sc-raw-td>iPhone 15</sc-raw-td><sc-raw-td>Safari 19</sc-raw-td
+                        ><sc-raw-td>28 июля</sc-raw-td
+                        ><sc-raw-td style="text-align: right"
+                          ><button class="btn btn-ghost">Отключить</button></sc-raw-td
+                        ></sc-raw-tr
+                      >
+                      <sc-raw-tr
+                        ><sc-raw-td>Рабочий ПК</sc-raw-td><sc-raw-td>Firefox 140</sc-raw-td
+                        ><sc-raw-td>12 июля</sc-raw-td
+                        ><sc-raw-td style="text-align: right"
+                          ><button class="btn btn-ghost">Отключить</button></sc-raw-td
+                        ></sc-raw-tr
+                      >
+                    </sc-raw-tbody>
+                  </sc-raw-table>
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid var(--color-divider);
+                    padding-top: 14px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                  "
+                >
+                  <h6 style="margin: 0; color: var(--color-accent)">Напоминания по умолчанию</h6>
+                  <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap">
+                    <span class="tag tag-accent">За 10 мин ×</span>
+                    <span class="tag tag-accent">За 1 час ×</span>
+                    <button class="btn btn-ghost">+ Добавить</button>
+                    <span class="text-muted" style="font-size: 12px; margin-left: auto"
+                      >Не больше пяти на событие</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">5b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Профиль и таймзона</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 400px;
+                  background: var(--color-bg);
+                  padding: 18px 20px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <span
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      display: grid;
+                      place-items: center;
+                      border: 1px solid var(--color-divider);
+                      font-family: var(--font-heading);
+                      font-size: 17px;
+                    "
+                    >ПК</span
+                  >
+                  <div>
+                    <h3 style="margin: 0">petr@example.com</h3>
+                    <span class="text-muted" style="font-size: 12px"
+                      >Аккаунт создан 12 июля 2026</span
+                    >
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Таймзона</label><input class="input" value="Europe/Moscow" />
+                  <span class="text-muted" style="font-size: 11px; display: block; margin-top: 4px"
+                    >Время повторяющихся встреч не сдвинется при переходе на летнее время.</span
+                  >
+                </div>
+                <div class="field">
+                  <label>Начало недели</label>
+                  <div class="seg">
+                    <label class="seg-opt"
+                      ><input type="radio" name="ws" checked="" />Понедельник</label
+                    >
+                    <label class="seg-opt"><input type="radio" name="ws" />Воскресенье</label>
+                  </div>
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid var(--color-divider);
+                    padding-top: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                  "
+                >
+                  <h6 style="margin: 0; color: var(--color-accent)">Безопасность</h6>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      font-size: 13px;
+                    "
+                  >
+                    <span>Пароль</span><button class="btn btn-secondary">Сменить</button>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      font-size: 13px;
+                    "
+                  >
+                    <span>Активные сессии<span class="text-muted"> · 3 устройства</span></span
+                    ><button class="btn btn-secondary">Завершить все</button>
+                  </div>
+                </div>
+                <button class="btn btn-secondary" style="align-self: flex-start">
+                  <svg
+                    width="15"
+                    height="15"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m16 17 5-5-5-5"></path>
+                    <path d="M21 12H9"></path>
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg
+                  >Выйти
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Состояния</h2>
+            <span class="text-muted" style="font-size: 13px"
+              >загрузка, отсутствие связи, пустой календарь</span
+            >
+          </div>
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">4a</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Загрузка</span>
+              </div>
+              <div class="blueprint" style="width: 620px; background: var(--color-bg)">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px 14px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <span
+                    style="width: 120px; height: 22px; background: var(--color-neutral-300)"
+                  ></span>
+                  <span
+                    style="
+                      width: 80px;
+                      height: 22px;
+                      background: var(--color-neutral-200);
+                      margin-left: auto;
+                    "
+                  ></span>
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    border-left: 1px solid var(--color-divider);
+                  "
+                >
+                  <sc-for list="{{ skeleton }}" as="s" hint-placeholder-count="21">
+                    <div
+                      style="
+                        height: 82px;
+                        padding: 7px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        border-right: 1px solid var(--color-divider);
+                        border-bottom: 1px solid var(--color-divider);
+                      "
+                    >
+                      <span
+                        style="width: 16px; height: 12px; background: var(--color-neutral-300)"
+                      ></span>
+                      <span
+                        style="width:{{ s.w1 }};height:9px;background:var(--color-neutral-200)"
+                      ></span>
+                      <span
+                        style="width:{{ s.w2 }};height:9px;background:var(--color-neutral-200)"
+                      ></span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">4b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Нет связи с API</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 420px;
+                  height: 260px;
+                  background: var(--color-bg);
+                  display: grid;
+                  place-items: center;
+                  padding: 24px;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    text-align: center;
+                    max-width: 300px;
+                  "
+                >
+                  <svg
+                    width="30"
+                    height="30"
+                    sc-camel-view-box="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="color: var(--color-accent)"
+                  >
+                    <path
+                      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+                    ></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  <h4 style="margin: 0">Не удалось загрузить события</h4>
+                  <p class="text-muted" style="margin: 0; font-size: 13px">
+                    Бэкенд ответил 503. Показан последний загруженный диапазон.
+                  </p>
+                  <button class="btn btn-primary">Повторить</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">4c</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Пусто — событий нет</span
+                >
+              </div>
+              <div class="blueprint" style="width: 620px; background: var(--color-bg)">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px 14px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <h4 style="margin: 0">Август 2026</h4>
+                  <button class="btn btn-primary" style="margin-left: auto">
+                    <svg
+                      width="15"
+                      height="15"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path></svg
+                    >Событие
+                  </button>
+                </div>
+                <div style="position: relative">
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(7, 1fr);
+                      border-left: 1px solid var(--color-divider);
+                      opacity: 0.45;
+                    "
+                  >
+                    <sc-for list="{{ skeleton }}" as="s" hint-placeholder-count="21">
+                      <div
+                        style="
+                          height: 82px;
+                          border-right: 1px solid var(--color-divider);
+                          border-bottom: 1px solid var(--color-divider);
+                        "
+                      ></div>
+                    </sc-for>
+                  </div>
+                  <div style="position: absolute; inset: 0; display: grid; place-items: center">
+                    <div
+                      class="blueprint elev-md"
+                      style="
+                        background: var(--color-bg);
+                        padding: 18px 22px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 8px;
+                        text-align: center;
+                        max-width: 300px;
+                      "
+                    >
+                      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                      ><i class="corner br"></i>
+                      <svg
+                        width="26"
+                        height="26"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="color: var(--color-accent)"
+                      >
+                        <path d="M8 2v4"></path>
+                        <path d="M16 2v4"></path>
+                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                        <path d="M3 10h18"></path>
+                      </svg>
+                      <h4 style="margin: 0">В этом месяце событий нет</h4>
+                      <p class="text-muted" style="margin: 0; font-size: 13px">
+                        Создайте первое — например, повторяющийся стендап по будням.
+                      </p>
+                      <button class="btn btn-primary">Создать событие</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style="display: flex; flex-direction: column; gap: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+              border-bottom: 1px solid var(--color-divider);
+              padding-bottom: 8px;
+            "
+          >
+            <h2 style="margin: 0">Мобильный</h2>
+            <span class="text-muted" style="font-size: 13px">390 × 844</span>
+          </div>
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">6a</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Месяц + день</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 390px;
+                  height: 844px;
+                  background: var(--color-bg);
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 14px 14px 10px">
+                  <div>
+                    <h4 style="margin: 0">Август 2026</h4>
+                    <span class="text-muted" style="font-size: 11px">Europe/Moscow</span>
+                  </div>
+                  <button
+                    class="btn btn-secondary btn-icon"
+                    style="margin-left: auto"
+                    aria-label="Уведомления"
+                  >
+                    <svg
+                      width="17"
+                      height="17"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M10.268 21a2 2 0 0 0 3.464 0"></path>
+                      <path
+                        d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                      ></path>
+                    </svg>
+                  </button>
+                  <span
+                    style="
+                      width: 30px;
+                      height: 30px;
+                      display: grid;
+                      place-items: center;
+                      border: 1px solid var(--color-divider);
+                      font-family: var(--font-heading);
+                      font-size: 12px;
+                    "
+                    >ПК</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    padding: 0 8px;
+                    font-size: 10px;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+                    text-align: center;
+                  "
+                >
+                  <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span
+                  ><span>Сб</span><span>Вс</span>
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    padding: 4px 8px 10px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <sc-for list="{{ mobileDays }}" as="d" hint-placeholder-count="42">
+                    <div
+                      style="
+                        height: 46px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 3px;
+                      "
+                    >
+                      <span
+                        style="font-family:var(--font-heading);font-size:15px;line-height:1;padding:4px 6px;color:{{ d.numFg }};background:{{ d.numBg }}"
+                        >{{ d.n }}</span
+                      >
+                      <span style="display: flex; gap: 2px; height: 4px">
+                        <sc-for list="{{ d.dots }}" as="dot" hint-placeholder-count="2">
+                          <span style="width:4px;height:4px;background:{{ dot.c }}"></span>
+                        </sc-for>
+                      </span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div
+                  style="
+                    padding: 12px 14px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    flex: 1;
+                  "
+                >
+                  <div style="display: flex; align-items: baseline; gap: 8px">
+                    <h5 style="margin: 0">Вторник, 11 августа</h5>
+                    <span class="text-muted" style="font-size: 11px; margin-left: auto"
+                      >2 события</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      padding: 9px 10px;
+                      border-left: 2px solid var(--color-accent-600);
+                      background: var(--color-accent-200);
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 12px;
+                        font-variant-numeric: tabular-nums;
+                        color: var(--color-accent-800);
+                        min-width: 44px;
+                      "
+                      >10:00</span
+                    >
+                    <div>
+                      <div style="font-family: var(--font-heading); font-size: 15px">Стендап</div>
+                      <span class="text-muted" style="font-size: 11px"
+                        >10:00 — 10:15 · повтор Пн—Пт</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      padding: 9px 10px;
+                      border-left: 2px solid var(--color-accent-400);
+                      background: var(--color-neutral-100);
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 12px;
+                        font-variant-numeric: tabular-nums;
+                        color: color-mix(in srgb, var(--color-text) 60%, transparent);
+                        min-width: 44px;
+                      "
+                      >19:00</span
+                    >
+                    <div>
+                      <div style="font-family: var(--font-heading); font-size: 15px">
+                        Тренировка
+                      </div>
+                      <span class="text-muted" style="font-size: 11px"
+                        >19:00 — 20:00 · напоминание за 30 мин</span
+                      >
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-block" style="margin-top: auto">
+                    <svg
+                      width="15"
+                      height="15"
+                      sc-camel-view-box="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path></svg
+                    >Новое событие
+                  </button>
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    border-top: 1px solid var(--color-divider);
+                  "
+                >
+                  <div
+                    style="
+                      padding: 10px 0;
+                      text-align: center;
+                      font-size: 11px;
+                      color: var(--color-accent);
+                      border-right: 1px solid var(--color-divider);
+                    "
+                  >
+                    Месяц
+                  </div>
+                  <div
+                    style="
+                      padding: 10px 0;
+                      text-align: center;
+                      font-size: 11px;
+                      border-right: 1px solid var(--color-divider);
+                    "
+                    class="text-muted"
+                  >
+                    Неделя
+                  </div>
+                  <div
+                    style="
+                      padding: 10px 0;
+                      text-align: center;
+                      font-size: 11px;
+                      border-right: 1px solid var(--color-divider);
+                    "
+                    class="text-muted"
+                  >
+                    День
+                  </div>
+                  <div
+                    style="padding: 10px 0; text-align: center; font-size: 11px"
+                    class="text-muted"
+                  >
+                    Список
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">6b</span>
+                <span style="font-family: var(--font-heading); font-size: 20px"
+                  >Событие — лист снизу</span
+                >
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 390px;
+                  height: 844px;
+                  background: var(--color-neutral-300);
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: flex-end;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    background: var(--color-bg);
+                    border-top: 1px solid var(--color-divider);
+                    padding: 16px 16px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                  "
+                >
+                  <span
+                    style="
+                      width: 44px;
+                      height: 3px;
+                      background: var(--color-neutral-400);
+                      align-self: center;
+                    "
+                  ></span>
+                  <div style="display: flex; align-items: center; gap: 8px">
+                    <span
+                      style="width: 10px; height: 10px; background: var(--color-accent-600)"
+                    ></span>
+                    <span class="tag tag-accent">Повторяется</span>
+                    <button
+                      class="btn btn-secondary btn-icon"
+                      style="margin-left: auto"
+                      aria-label="Закрыть"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      >
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <h3 style="margin: 0">Созвон с заказчиком</h3>
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: auto 1fr;
+                      gap: 6px 14px;
+                      font-size: 14px;
+                    "
+                  >
+                    <span class="text-muted">Когда</span><span>Ср, 12 августа, 13:00 — 14:00</span>
+                    <span class="text-muted">Было</span><span>12 августа, 11:00 — 12:00</span>
+                    <span class="text-muted">Правило</span><span>Каждую среду</span>
+                    <span class="text-muted">Напомнить</span><span>За 15 минут</span>
+                  </div>
+                  <div
+                    style="
+                      border-top: 1px solid var(--color-divider);
+                      padding-top: 10px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 7px;
+                    "
+                  >
+                    <h6 style="margin: 0; color: var(--color-accent)">
+                      Это вхождение · 12 августа
+                    </h6>
+                    <div style="display: flex; gap: 7px; flex-wrap: wrap">
+                      <button class="btn btn-secondary">Перенести</button>
+                      <button class="btn btn-secondary">Удалить только это</button>
+                      <button class="btn btn-ghost">Вернуть по правилу</button>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 8px;
+                      border-top: 1px solid var(--color-divider);
+                      padding-top: 10px;
+                    "
+                  >
+                    <button class="btn btn-primary" style="flex: 1">Изменить серию</button>
+                    <button class="btn btn-secondary" aria-label="Удалить серию">
+                      <svg
+                        width="15"
+                        height="15"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: baseline; gap: 10px">
+                <span class="tag tag-outline" style="font-family: var(--font-heading)">6c</span>
+                <span style="font-family: var(--font-heading); font-size: 20px">Форма события</span>
+              </div>
+              <div
+                class="blueprint"
+                style="
+                  width: 390px;
+                  height: 844px;
+                  background: var(--color-bg);
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+                ><i class="corner br"></i>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px 14px;
+                    border-bottom: 1px solid var(--color-divider);
+                  "
+                >
+                  <button class="btn btn-ghost">Отмена</button>
+                  <h5 style="margin: 0 auto">Новое событие</h5>
+                  <button class="btn btn-ghost" style="font-weight: 600">Сохранить</button>
+                </div>
+                <div style="padding: 14px; display: flex; flex-direction: column; gap: 12px">
+                  <div class="field">
+                    <label>Название</label><input class="input" value="1-на-1 с Аней" />
+                  </div>
+                  <label class="radio" style="gap: 10px"
+                    ><input type="checkbox" /><span class="dot"></span>Весь день</label
+                  >
+                  <div class="field">
+                    <label>Начало</label>
+                    <div style="display: flex; gap: 6px">
+                      <input class="input" value="12.08.2026" /><input
+                        class="input"
+                        style="width: 84px"
+                        value="15:00"
+                      />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Конец</label>
+                    <div style="display: flex; gap: 6px">
+                      <input class="input" value="12.08.2026" /><input
+                        class="input"
+                        style="width: 84px"
+                        value="15:45"
+                      />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Повторение</label>
+                    <div class="seg" style="width: 100%">
+                      <label class="seg-opt" style="flex: 1; justify-content: center"
+                        ><input type="radio" name="rep6c" />Нет</label
+                      >
+                      <label class="seg-opt" style="flex: 1; justify-content: center"
+                        ><input type="radio" name="rep6c" />День</label
+                      >
+                      <label class="seg-opt" style="flex: 1; justify-content: center"
+                        ><input type="radio" name="rep6c" checked="" />Неделя</label
+                      >
+                      <label class="seg-opt" style="flex: 1; justify-content: center"
+                        ><input type="radio" name="rep6c" />Месяц</label
+                      >
+                    </div>
+                    <div
+                      style="
+                        margin-top: 7px;
+                        display: flex;
+                        align-items: center;
+                        gap: 7px;
+                        font-size: 12px;
+                      "
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        sc-camel-view-box="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="color: var(--color-accent)"
+                      >
+                        <path d="m17 2 4 4-4 4"></path>
+                        <path d="M3 11v-1a4 4 0 0 1 4-4h14"></path>
+                        <path d="m7 22-4-4 4-4"></path>
+                        <path d="M21 13v1a4 4 0 0 1-4 4H3"></path>
+                      </svg>
+                      Каждую среду, бессрочно
+                      <a href="#3c" style="margin-left: auto; font-size: 12px">Настроить…</a>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Напоминания</label>
+                    <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap">
+                      <span class="tag tag-accent">За 15 мин ×</span>
+                      <button class="btn btn-ghost">+ Добавить</button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Цвет</label>
+                    <div style="display: flex; gap: 8px">
+                      <span
+                        style="
+                          width: 30px;
+                          height: 30px;
+                          background: var(--color-accent-600);
+                          outline: 1px solid var(--color-text);
+                          outline-offset: 2px;
+                        "
+                      ></span>
+                      <span
+                        style="width: 30px; height: 30px; background: var(--color-accent-500)"
+                      ></span>
+                      <span
+                        style="width: 30px; height: 30px; background: var(--color-accent-300)"
+                      ></span>
+                      <span
+                        style="width: 30px; height: 30px; background: var(--color-neutral-600)"
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Описание</label
+                    ><textarea
+                      class="input"
+                      style="min-height: 80px"
+                      placeholder="Необязательно"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </x-dc>
+    <script type="text/x-dc" data-dc-script="" data-props="{}">
+      class Component extends DCLogic {
+        renderVals() {
+          const MEET = { bd: 'var(--color-accent-600)', bg: 'var(--color-accent-200)' };
+          const PERS = { bd: 'var(--color-accent-400)', bg: 'var(--color-accent-100)' };
+          const ALLD = { bd: 'var(--color-neutral-600)', bg: 'var(--color-neutral-100)' };
+          const map = {};
+          const put = (m, d, t, title, tone) => {
+            const k = m + '-' + d;
+            (map[k] = map[k] || []).push({ t, title, bd: tone.bd, bg: tone.bg });
+          };
+          const each = (m, list, t, title, tone) => list.forEach((d) => put(m, d, t, title, tone));
+
+          each(7, [27, 28, 29, 30, 31], '10:00', 'Стендап', MEET);
+          each(8, [3,4,5,6,7,10,11,12,13,14,17,18,19,20,21,24,25,26,27,28,31], '10:00', 'Стендап', MEET);
+          each(9, [1, 2, 3, 4], '10:00', 'Стендап', MEET);
+          each(8, [10, 24], '11:30', 'Планирование', MEET);
+          each(8, [5, 12, 19, 26], '15:00', '1-на-1 с Аней', MEET);
+          each(8, [7, 21], '17:00', 'Спринт-ревью', MEET);
+          put(8, 21, '18:00', 'Ретро', MEET);
+          each(8, [4, 6, 11, 13, 18, 20, 25, 27], '19:00', 'Тренировка', PERS);
+          put(8, 12, '13:00', 'Созвон с заказчиком', MEET);
+          put(8, 18, '', 'День рождения Кати', ALLD);
+          each(8, [24, 25, 26, 27, 28], '', 'Отпуск', ALLD);
+
+          const seq = [];
+          for (let d = 27; d <= 31; d++) seq.push([7, d]);
+          for (let d = 1; d <= 31; d++) seq.push([8, d]);
+          for (let d = 1; d <= 6; d++) seq.push([9, d]);
+
+          const days = seq.map(([m, d]) => {
+            const all = map[m + '-' + d] || [];
+            const outside = m !== 8;
+            const today = m === 8 && d === 11;
+            return {
+              n: String(d),
+              label: d === 1 ? (m === 8 ? 'авг' : 'сен') : (m === 7 && d === 27 ? 'июл' : false),
+              bg: outside ? 'var(--color-neutral-100)' : 'transparent',
+              numFg: today ? 'var(--color-bg)' : (outside ? 'color-mix(in srgb, var(--color-text) 45%, transparent)' : 'var(--color-text)'),
+              numBg: today ? 'var(--color-accent)' : 'transparent',
+              events: all.slice(0, 3),
+              more: all.length > 3 ? '+' + (all.length - 3) + ' ещё' : false,
+            };
+          });
+
+          const agenda = [
+            { day: '11 авг', dow: 'Сегодня', items: [
+              { t: '10:00 — 10:15', title: 'Стендап', tag: 'Повтор' },
+              { t: '19:00 — 20:00', title: 'Тренировка', tag: 'Повтор' },
+            ] },
+            { day: '12 авг', dow: 'Среда', items: [
+              { t: '10:00 — 10:15', title: 'Стендап', tag: 'Повтор' },
+              { t: '13:00 — 14:00', title: 'Созвон с заказчиком', tag: 'Перенесено' },
+              { t: '15:00 — 15:45', title: '1-на-1 с Аней', tag: 'Повтор' },
+            ] },
+            { day: '14 авг', dow: 'Пятница', items: [
+              { t: '10:00 — 10:15', title: 'Стендап', tag: 'Повтор' },
+            ] },
+            { day: '18 авг', dow: 'Вторник', items: [
+              { t: 'Весь день', title: 'День рождения Кати', tag: false },
+              { t: '10:00 — 10:15', title: 'Стендап', tag: 'Повтор' },
+            ] },
+            { day: '21 авг', dow: 'Пятница', items: [
+              { t: '17:00 — 18:00', title: 'Спринт-ревью', tag: 'Повтор' },
+              { t: '18:00 — 19:00', title: 'Ретро', tag: 'Повтор' },
+            ] },
+          ];
+
+          const skeleton = Array.from({ length: 21 }, (_, i) => ({
+            w1: [70, 55, 85, 45][i % 4] + '%',
+            w2: [40, 65, 30, 75][(i + 1) % 4] + '%',
+          }));
+
+          const mobileDays = days.map((d) => ({
+            n: d.n,
+            numFg: d.numFg,
+            numBg: d.numBg,
+            dots: d.events.map((e) => ({ c: e.bd })),
+          }));
+
+          return { days, agenda, skeleton, mobileDays };
+        }
+      }
+    </script>
+
+    <div id="__claude_design_branding">
+      <style>
+        #__claude_design_branding {
+          position: fixed;
+          right: 16px;
+          bottom: 16px;
+          z-index: 2147483646;
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          height: 30px;
+          padding: 0 5px 0 10px;
+          border-radius: 999px;
+          font-family:
+            'Anthropic Sans',
+            -apple-system,
+            BlinkMacSystemFont,
+            system-ui,
+            sans-serif;
+          font-size: 12.5px;
+          font-weight: 400;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          color: #141413;
+          background: rgba(255, 255, 255, 0.86);
+          -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
+          box-shadow:
+            0 0 0 0.5px rgba(31, 30, 29, 0.14),
+            0 2px 10px rgba(0, 0, 0, 0.09);
+        }
+        #__claude_design_branding * {
+          box-sizing: border-box;
+          margin: 0;
+        }
+        #__claude_design_branding a {
+          color: inherit;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          white-space: nowrap;
+        }
+        #__claude_design_branding a:hover span {
+          text-decoration: underline;
+        }
+        #__claude_design_branding svg {
+          flex: none;
+        }
+        #__claude_design_branding a svg {
+          color: #d97757;
+        }
+        #__claude_design_branding button {
+          width: 20px;
+          height: 20px;
+          padding: 0;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: currentColor;
+          opacity: 0.55;
+          border: 0;
+          background: none;
+          cursor: pointer;
+          flex: none;
+          font: inherit;
+          transition: opacity 0.14s;
+        }
+        #__claude_design_branding button:hover {
+          opacity: 1;
+          background: rgba(127, 127, 127, 0.22);
+        }
+        @media print {
+          #__claude_design_branding {
+            display: none;
+          }
+        }</style
+      ><a href="https://claude.com/product/design" target="_blank" rel="noopener noreferrer"
+        ><svg width="14" height="14" viewBox="0 0 20 21" fill="none" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M9.99902 0C15.5258 0.000170936 19.999 4.50643 19.999 10.0547C19.999 11.7656 19.5863 12.9976 18.7861 13.8203C17.9924 14.6362 16.9465 14.9138 15.9854 15.0078C15.05 15.0993 14.0097 15.0262 13.2549 15.0186C12.8524 15.0145 12.5177 15.0267 12.2441 15.0703C11.9682 15.1144 11.8143 15.1813 11.7305 15.2432C11.4745 15.4322 11.3353 15.7121 11.2656 16.1602C11.2303 16.3875 11.2168 16.6362 11.209 16.9131C11.2017 17.1715 11.1986 17.4893 11.1807 17.7705C11.1469 18.2975 11.0495 19.0865 10.4199 19.5908C9.7846 20.0996 8.88652 20.1057 7.85449 19.877C7.36399 19.7682 6.88652 19.6232 6.42578 19.4453C2.66989 17.9949 0.000187748 14.3414 0 10.0547C0 4.50643 4.47223 0.000171048 9.99902 0ZM9.99902 1.60547C5.36781 1.60564 1.60547 5.38391 1.60547 10.0547C1.60566 13.6582 3.84823 16.7296 7.00391 17.9482C7.39027 18.0974 7.79085 18.2184 8.20215 18.3096C9.1375 18.5169 9.384 18.3633 9.41602 18.3379C9.4524 18.3087 9.54558 18.1915 9.5791 17.668C9.5947 17.4239 9.59473 17.1786 9.60352 16.8672C9.61179 16.5742 9.62831 16.2435 9.67969 15.9131C9.78359 15.2455 10.0474 14.4906 10.7764 13.9521C11.1479 13.6778 11.5842 13.5493 11.9912 13.4844C12.4007 13.4191 12.8434 13.4088 13.2705 13.4131C14.1753 13.4222 15.0071 13.4905 15.8291 13.4102C16.6257 13.3322 17.2249 13.1235 17.6357 12.7012C18.0401 12.2855 18.3935 11.5261 18.3936 10.0547C18.3936 5.38391 14.6302 1.60564 9.99902 1.60547ZM5.11621 9.86719C5.86386 9.91468 6.45486 10.5348 6.45508 11.2939C6.45506 12.0838 5.81519 12.7245 5.02539 12.7246C4.28481 12.7246 3.67573 12.1617 3.60254 11.4404L3.59473 11.2939L3.60156 11.1533C3.66942 10.4596 4.23282 9.91186 4.93359 9.86719H5.11621ZM14.9814 7.19141C15.729 7.23889 16.3199 7.85919 16.3203 8.61816C16.3203 9.40801 15.6804 10.0487 14.8906 10.0488C14.1501 10.0487 13.5409 9.48586 13.4678 8.76465L13.46 8.61816L13.4668 8.47754C13.5348 7.78403 14.0983 7.23618 14.7988 7.19141H14.9814ZM6.4541 4.93457C7.20161 4.9822 7.79275 5.60231 7.79297 6.36133C7.79288 7.151 7.15291 7.7917 6.36328 7.79199C5.62274 7.79199 5.01369 7.22903 4.94043 6.50781L4.93262 6.36133L4.93945 6.2207C5.00731 5.52698 5.5707 4.97922 6.27148 4.93457H6.4541ZM11.3867 3.59668C12.1343 3.64419 12.7253 4.26436 12.7256 5.02344C12.7256 5.81326 12.0857 6.45393 11.2959 6.4541C10.5553 6.4541 9.94622 5.89123 9.87305 5.16992L9.86523 5.02344L9.87207 4.88281C9.93996 4.18912 10.5033 3.64133 11.2041 3.59668H11.3867Z"
+          ></path></svg
+        ><span>Made with Claude Design</span></a
+      ><button type="button" aria-label="Dismiss" onclick="this.parentElement.remove()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path
+            d="M2 2l8 8M10 2l-8 8"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </body>
+</html>

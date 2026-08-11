@@ -1,0 +1,83 @@
+/**
+ * Токены дизайн-системы Industry — перенесены из макета
+ * (см. design/calendar-mockup.html).
+ *
+ * Это единственное место, где заданы «сырые» значения цветов, шрифтов
+ * и отступов. Компоненты обязаны ссылаться на переменные, а не на литералы,
+ * иначе перекрасить систему станет невозможно.
+ */
+
+:root {
+  --color-bg: #f2f2f3;
+  --color-surface: #e9e9ea;
+  --color-text: #1d1f20;
+  --color-accent: #5980a6;
+  --color-accent-2: #728fab;
+  --color-divider: color-mix(in srgb, #1d1f20 16%, transparent);
+
+  /* Тональные шкалы построены в OKLCH на общей шкале светлоты: одинаковая
+     ступень у разных ролей совпадает по визуальному весу. */
+  --color-neutral-100: #f5f5f8;
+  --color-neutral-200: #e7e7ea;
+  --color-neutral-300: #d4d4d7;
+  --color-neutral-400: #b7b7ba;
+  --color-neutral-500: #98989b;
+  --color-neutral-600: #7a7a7d;
+  --color-neutral-700: #5d5d60;
+  --color-neutral-800: #424244;
+  --color-neutral-900: #2b2b2d;
+
+  --color-accent-100: #eef6ff;
+  --color-accent-200: #d6ebff;
+  --color-accent-300: #b5d9fd;
+  --color-accent-400: #94bce3;
+  --color-accent-500: #749dc4;
+  --color-accent-600: #597ea3;
+  --color-accent-700: #416180;
+  --color-accent-800: #2c455d;
+  --color-accent-900: #1d2d3d;
+
+  --color-accent-2-100: #eef6ff;
+  --color-accent-2-200: #d6ebff;
+  --color-accent-2-300: #bdd8f2;
+  --color-accent-2-400: #9ebbd8;
+  --color-accent-2-500: #7e9cb8;
+  --color-accent-2-600: #627d98;
+  --color-accent-2-700: #486077;
+  --color-accent-2-800: #314457;
+  --color-accent-2-900: #1f2d3a;
+
+  /* Barlow не содержит кириллицы — в макете у него подключены только
+     latin, latin-ext и vietnamese. Roboto стоит следующим в стеке
+     намеренно: браузер подбирает шрифт для каждого глифа отдельно,
+     поэтому латиница останется в Barlow, а кириллица придёт из Roboto
+     с той же гротесковой пластикой. */
+  --font-heading: 'Barlow Condensed', 'Roboto Condensed', system-ui, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: 'Barlow', 'Roboto', system-ui, sans-serif;
+
+  --space-1: 3.4px;
+  --space-2: 6.8px;
+  --space-3: 10.2px;
+  --space-4: 13.6px;
+  --space-6: 20.4px;
+  --space-8: 27.2px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+
+  /* Тени выведены из фона: мягкие, подкрашенные цветом текста. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent);
+
+  /* Собственные токены календаря — в макете эти значения стоят инлайном,
+     здесь они собраны, чтобы сетку можно было настраивать в одном месте. */
+  --calendar-day-min-height: 106px;
+  --calendar-hour-height: 48px;
+  --calendar-time-gutter: 56px;
+  --calendar-hairline: color-mix(in srgb, var(--color-text) 7%, transparent);
+
+  color-scheme: light;
+}

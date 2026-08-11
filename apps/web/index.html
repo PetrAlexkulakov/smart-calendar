@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Умный календарь</title>
+
+    <!--
+      Barlow — шрифт дизайн-системы, но кириллицы в нём нет.
+      Roboto подключён как запасной: браузер подбирает шрифт для каждого
+      глифа отдельно, поэтому латиница остаётся в Barlow, а русский текст
+      берётся из Roboto (см. --font-body в styles/tokens.css).
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
