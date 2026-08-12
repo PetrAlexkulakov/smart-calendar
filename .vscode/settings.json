@@ -7,6 +7,17 @@
     "source.fixAll.eslint": "explicit"
   },
 
+  // Путь к конфигу задан явно: в глобальных настройках может стоять
+  // prettier.configPath от другого проекта, и тогда Prettier ищет файл,
+  // которого здесь нет. Вместе с requireConfig это выключает
+  // форматирование совсем — молча, без единой ошибки.
+  "prettier.configPath": ".prettierrc.json",
+
+  // Автосохранение с задержкой несовместимо с форматированием по Ctrl+S:
+  // файл успевает сохраниться сам (без форматирования), и к моменту
+  // нажатия Ctrl+S сохранять уже нечего — событие не срабатывает.
+  "files.autoSave": "off",
+
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },

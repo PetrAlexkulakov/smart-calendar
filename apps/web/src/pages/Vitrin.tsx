@@ -12,6 +12,7 @@ export function Vitrin() {
       return response.json() as Promise<HealthResponse>;
     },
   });
+
   return (
     <div style={{ maxWidth: 940, margin: '0 auto', padding: '48px 24px 96px' }}>
       <header style={{ marginBottom: 'var(--space-8)' }}>
