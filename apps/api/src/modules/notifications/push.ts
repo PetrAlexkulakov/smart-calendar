@@ -1,9 +1,9 @@
 import type { PushPayload } from '@smart-calendar/shared';
 import webpush from 'web-push';
 
+import type { PushSubscription } from '../../../generated/prisma/client.ts';
 import { env } from '../../config/env.ts';
 import { prisma } from '../../lib/prisma.ts';
-import type { PushSubscription } from '../../../generated/prisma/client.ts';
 
 /**
  * Push работает только при настроенных ключах VAPID — ими сервер

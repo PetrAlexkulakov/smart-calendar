@@ -18,8 +18,12 @@ npm-debug.log*
 Thumbs.db
 
 .idea/
+
+# Настройки редактора общие для всех: форматирование по Ctrl+S должно
+# работать одинаково у любого, кто клонирует репозиторий.
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 
 # Сгенерированный клиент Prisma
 apps/api/generated/

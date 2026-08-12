@@ -49,8 +49,8 @@ describe('разовые события', () => {
     );
 
     expect(result).toHaveLength(1);
-    expect(result[0]!.isRecurring).toBe(false);
-    expect(result[0]!.occurrenceStart).toBe('2026-03-02T06:00:00.000Z');
+    expect(result[0].isRecurring).toBe(false);
+    expect(result[0].occurrenceStart).toBe('2026-03-02T06:00:00.000Z');
   });
 
   it('не попадает в диапазон, который не пересекает', () => {
@@ -90,7 +90,7 @@ describe('простые повторения', () => {
     );
 
     expect(result).toHaveLength(7);
-    expect(result[0]!.isRecurring).toBe(true);
+    expect(result[0].isRecurring).toBe(true);
   });
 
   it('правило по будням пропускает выходные', () => {
@@ -174,8 +174,8 @@ describe('переход на летнее время', () => {
     ]);
 
     // А вот в UTC время действительно разъезжается — ради этого всё и затевалось.
-    expect(result[0]!.startsAt).toBe('2026-03-27T08:00:00.000Z');
-    expect(result[4]!.startsAt).toBe('2026-03-31T07:00:00.000Z');
+    expect(result[0].startsAt).toBe('2026-03-27T08:00:00.000Z');
+    expect(result[4].startsAt).toBe('2026-03-31T07:00:00.000Z');
   });
 
   it('событие на весь день не съезжает на сутки при переходе', () => {

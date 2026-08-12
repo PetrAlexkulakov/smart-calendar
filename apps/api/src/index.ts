@@ -15,7 +15,7 @@ startScheduler();
  * Корректное завершение: перестаём принимать новые запросы, даём текущим
  * доиграть и только потом закрываем пул соединений с базой.
  */
-async function shutdown(signal: string): Promise<void> {
+function shutdown(signal: string): void {
   console.log(`Получен ${signal}, останавливаем сервер…`);
 
   server.close(() => {
@@ -26,5 +26,5 @@ async function shutdown(signal: string): Promise<void> {
   setTimeout(() => process.exit(1), 10_000).unref();
 }
 
-process.on('SIGTERM', () => void shutdown('SIGTERM'));
-process.on('SIGINT', () => void shutdown('SIGINT'));
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));

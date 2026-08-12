@@ -4,7 +4,7 @@ import { Router } from 'express';
 import { env } from '../../config/env.ts';
 import { prisma } from '../../lib/prisma.ts';
 import { getUserId, requireAuth } from '../../middleware/requireAuth.ts';
-import { validateBody } from '../../middleware/validate.ts';
+import { parseBody } from '../../middleware/validate.ts';
 import { isPushConfigured } from './push.ts';
 
 export const notificationsRouter = Router();
@@ -27,37 +27,27 @@ notificationsRouter.use(requireAuth);
  * уникален, поэтому повторная подписка обновляет существующую запись,
  * а не плодит дубли.
  */
-notificationsRouter.post('/subscribe', validateBody(pushSubscriptionSchema), async (req, res) => {
+notificationsRouter.post('/subscribe', async (req, res) => {
   const userId = getUserId(req);
-  const { endpoint, keys } = req.body;
+  const { endpoint, keys } = parseBody(req, pushSubscriptionSchema);
+  const userAgent = req.get('user-agent') ?? null;
 
   await prisma.pushSubscription.upsert({
     where: { endpoint },
-    create: {
-      userId,
-      endpoint,
-      p256dh: keys.p256dh,
-      auth: keys.auth,
-      userAgent: req.get('user-agent') ?? null,
-    },
+    create: { userId, endpoint, p256dh: keys.p256dh, auth: keys.auth, userAgent },
     // Тот же браузер мог раньше принадлежать другому аккаунту —
     // подписку надо переприсвоить, иначе уведомления уйдут не туда.
-    update: {
-      userId,
-      p256dh: keys.p256dh,
-      auth: keys.auth,
-      userAgent: req.get('user-agent') ?? null,
-    },
+    update: { userId, p256dh: keys.p256dh, auth: keys.auth, userAgent },
   });
 
   res.status(204).end();
 });
 
-notificationsRouter.post('/unsubscribe', validateBody(unsubscribeSchema), async (req, res) => {
+notificationsRouter.post('/unsubscribe', async (req, res) => {
+  const { endpoint } = parseBody(req, unsubscribeSchema);
+
   // Удаляем только свою подписку: чужой endpoint отписать нельзя.
-  await prisma.pushSubscription.deleteMany({
-    where: { endpoint: req.body.endpoint, userId: getUserId(req) },
-  });
+  await prisma.pushSubscription.deleteMany({ where: { endpoint, userId: getUserId(req) } });
 
   res.status(204).end();
 });

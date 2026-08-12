@@ -109,7 +109,7 @@ describe('runReminderTick', () => {
 
     const sent = await prisma.sentNotification.findMany({ where: { eventId: event.id } });
     expect(sent).toHaveLength(1);
-    expect(sent[0]!.reminderMinutes).toBe(10);
+    expect(sent[0].reminderMinutes).toBe(10);
   });
 
   it('шлёт напоминание для ближайшего вхождения повторяющегося события', async () => {

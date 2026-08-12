@@ -6,10 +6,10 @@ import type {
   UpdateEventInput,
 } from '@smart-calendar/shared';
 
+import type { Event } from '../../../generated/prisma/client.ts';
 import { NotFoundError, ValidationError } from '../../lib/errors.ts';
 import { prisma } from '../../lib/prisma.ts';
 import { expandEvents, isValidRRule } from '../../lib/recurrence.ts';
-import type { Event } from '../../../generated/prisma/client.ts';
 
 /**
  * Схема в общем пакете проверяет только форму правила. Настоящий разбор

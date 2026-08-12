@@ -1,36 +1,37 @@
-import type { RequestHandler } from 'express';
+import type { Request } from 'express';
 import type { ZodType } from 'zod';
 
 /**
- * Проверяет тело запроса схемой и подменяет req.body разобранным значением —
- * дальше по цепочке приходят уже приведённые к нужным типам данные.
- * Ошибку не ловим: ZodError долетит до errorHandler и станет 400.
+ * Разбор входных данных запроса.
+ *
+ * Раньше это были middleware, которые складывали результат обратно в req.
+ * Проблема в том, что Express типизирует req.body, req.query и req.cookies
+ * как any: обработчик получал данные без типов, и любое обращение к полю
+ * было неявным приведением. Теперь схема разбирается прямо в обработчике
+ * и возвращает значение с выведенным из неё типом.
+ *
+ * ZodError ловить не нужно — Express 5 доводит её до errorHandler,
+ * который превращает её в 400 с разбором по полям.
  */
-export function validateBody<T>(schema: ZodType<T>): RequestHandler {
-  return (req, _res, next) => {
-    req.body = schema.parse(req.body);
-    next();
-  };
+export function parseBody<T>(req: Request, schema: ZodType<T>): T {
+  return schema.parse(req.body);
 }
 
-/** То же самое для query-параметров. */
-export function validateQuery<T>(schema: ZodType<T>): RequestHandler {
-  return (req, _res, next) => {
-    // В Express 5 req.query — геттер без сеттера, поэтому разобранное
-    // значение кладём отдельным полем.
-    req.validatedQuery = schema.parse(req.query);
-    next();
-  };
+export function parseQuery<T>(req: Request, schema: ZodType<T>): T {
+  return schema.parse(req.query);
 }
 
-/**
- * Проверяет параметры пути. Помимо типизации это отсекает мусорные id:
- * без проверки строка вроде "abc" ушла бы в Prisma и вернулась
- * пятисоткой вместо внятного 400.
- */
-export function validateParams<T>(schema: ZodType<T>): RequestHandler {
-  return (req, _res, next) => {
-    req.validatedParams = schema.parse(req.params);
-    next();
-  };
+export function parseParams<T>(req: Request, schema: ZodType<T>): T {
+  return schema.parse(req.params);
+}
+
+/** Значение cookie или undefined. Отдельно, потому что req.cookies — тоже any. */
+export function getCookie(req: Request, name: string): string | undefined {
+  const cookies: unknown = req.cookies;
+  if (typeof cookies !== 'object' || cookies === null) {
+    return undefined;
+  }
+
+  const value: unknown = (cookies as Record<string, unknown>)[name];
+  return typeof value === 'string' && value.length > 0 ? value : undefined;
 }

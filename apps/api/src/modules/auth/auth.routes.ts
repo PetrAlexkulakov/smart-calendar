@@ -6,7 +6,7 @@ import { Router } from 'express';
 import { env } from '../../config/env.ts';
 import { UnauthorizedError } from '../../lib/errors.ts';
 import { getUserId, requireAuth } from '../../middleware/requireAuth.ts';
-import { validateBody } from '../../middleware/validate.ts';
+import { getCookie, parseBody } from '../../middleware/validate.ts';
 import * as authService from './auth.service.ts';
 import { revokeRefreshToken, rotateRefreshToken, signAccessToken } from './tokens.ts';
 
@@ -42,15 +42,17 @@ function clearRefreshCookie(res: Response): void {
 
 export const authRouter = Router();
 
-authRouter.post('/register', validateBody(registerSchema), async (req, res) => {
-  const { user, accessToken, refreshToken } = await authService.register(req.body);
+authRouter.post('/register', async (req, res) => {
+  const { user, accessToken, refreshToken } = await authService.register(
+    parseBody(req, registerSchema),
+  );
 
   setRefreshCookie(res, refreshToken);
   res.status(201).json({ user, accessToken } satisfies AuthResponse);
 });
 
-authRouter.post('/login', validateBody(loginSchema), async (req, res) => {
-  const { user, accessToken, refreshToken } = await authService.login(req.body);
+authRouter.post('/login', async (req, res) => {
+  const { user, accessToken, refreshToken } = await authService.login(parseBody(req, loginSchema));
 
   setRefreshCookie(res, refreshToken);
   res.json({ user, accessToken } satisfies AuthResponse);
@@ -58,8 +60,8 @@ authRouter.post('/login', validateBody(loginSchema), async (req, res) => {
 
 /** Обменивает refresh-cookie на новый access-токен и новую cookie. */
 authRouter.post('/refresh', async (req, res) => {
-  const token: unknown = req.cookies?.[REFRESH_COOKIE];
-  if (typeof token !== 'string' || !token) {
+  const token = getCookie(req, REFRESH_COOKIE);
+  if (!token) {
     throw new UnauthorizedError('Нет refresh-токена');
   }
 
@@ -71,8 +73,8 @@ authRouter.post('/refresh', async (req, res) => {
 });
 
 authRouter.post('/logout', async (req, res) => {
-  const token: unknown = req.cookies?.[REFRESH_COOKIE];
-  if (typeof token === 'string' && token) {
+  const token = getCookie(req, REFRESH_COOKIE);
+  if (token) {
     await revokeRefreshToken(token);
   }
 
