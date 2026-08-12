@@ -1,12 +1,15 @@
+import { Route, Routes } from 'react-router';
+
+import { MainPage } from './pages/MainPage.tsx';
+import { NotFoundPage } from './pages/NotFoundPage.tsx';
 import { Vitrin } from './pages/Vitrin.tsx';
 
-/**
- * Витрина дизайн-системы: показывает перенесённые из макета токены
- * и компоненты, чтобы их можно было проверить глазами до того, как
- * появятся настоящие экраны.
- *
- * Уйдёт на этапе 4, когда её место займут роутер и календарь.
- */
 export function App() {
-  return <Vitrin />;
+  return (
+    <Routes>
+      <Route index element={<MainPage />} />
+      <Route path="/vitrin" element={<Vitrin />} />
+      <Route path="/*" element={<NotFoundPage />} />
+    </Routes>
+  );
 }
